@@ -1,8 +1,8 @@
 # Gesture Controlled Robot
-<!--
+
 //fix summary
 Today I constructed a calculator through soldering buttons, an MPU (STC Chip), and a button battery to the motherboard for the calculator. Originally when soldering the MPU, one of its pins did not make it through to the other side of the motherboard, causing the calculator to malfunction when outputting to its display. Fixing the issue was painfully done by resoldering, and changing the orientation of the chip. Troubleshooting these issues, I better understand how to read confusing pin diagrams and double-check the placement of components before soldering them.
--->
+
 
 <!--- You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions: --> 
 <!--- This is an HTML comment in Markdown -->
