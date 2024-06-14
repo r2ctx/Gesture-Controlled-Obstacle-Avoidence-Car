@@ -1,6 +1,7 @@
 # Gesture Controlled Robot
-<!---
-Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails! (Will add soon)
+<!--
+//fix summary
+Today I constructed a calculator through soldering buttons, an MPU (STC Chip), and a button battery to the motherboard for the calculator. Originally when soldering the MPU, one of its pins did not make it through to the other side of the motherboard, causing the calculator to malfunction when outputting to its display. Fixing the issue was painfully done by resoldering, and changing the orientation of the chip. Troubleshooting these issues, I better understand how to read confusing pin diagrams and double-check the placement of components before soldering them.
 -->
 
 <!--- You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions: --> 
@@ -10,7 +11,7 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Ryan Chakravarthy | Amador Valley High School | Cybersecurity | Rising Junior |
+| Ryan Chakravarthy | Amador Valley High School | Cybersecurity | Rising  Junior |
 
 <!--- **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.** -->
 
