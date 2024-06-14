@@ -1,7 +1,7 @@
 # Gesture Controlled Robot
 Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails! (Will add soon)
 
-You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
+<!--- You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions: -->
 ```HTML 
 <!--- This is an HTML comment in Markdown -->
 <!--- Anything between these symbols will not render on the published site -->
@@ -20,7 +20,7 @@ You should comment out all portions of your portfolio that you have not complete
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lBnLvlJ5_s4?si=6Fjxz9oYdJ5fjPSC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
- <!--- 
+<!---
  # Final Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
@@ -65,7 +65,7 @@ Here's where you'll put images of your schematics. [Tinkercad](https://www.tinke
 # Code
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
-```c++
+c++
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -76,7 +76,7 @@ void loop() {
   // put your main code here, to run repeatedly:
 
 }
-```
+
 
 # Bill of Materials
 Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
@@ -96,4 +96,4 @@ One of the best parts about Github is that you can view how other people set up 
 
 To watch the BSE tutorial on how to create a portfolio, click here.
 
- -->  
+-->
