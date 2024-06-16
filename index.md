@@ -8,7 +8,7 @@
 
 | **Engineer** | **School** | **Field of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-<p>| Ryan Chakravarthy | Amador Valley High School | Cybersecurity | Rising Junior |
+| Ryan Chakravarthy | Amador Valley High School | Cybersecurity | Rising Junior |
 
 <!--- **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.** -->
 
@@ -18,8 +18,8 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lBnLvlJ5_s4?si=6Fjxz9oYdJ5fjPSC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-//fix summary*
-Today I constructed a calculator through soldering buttons, an MPU (STC Chip), and a button battery to the motherboard for the calculator. Originally when soldering the MPU, one of its pins did not make it through to the other side of the motherboard, causing the calculator to malfunction when outputting to its display. Fixing the issue was painfully done by resoldering, and changing the orientation of the chip. Troubleshooting these issues, I better understand how to read confusing pin diagrams and double-check the placement of components before soldering them.
+*Today I constructed a calculator through soldering buttons, an MPU (STC Chip), and a button battery to the motherboard for the calculator. Originally when soldering the MPU, one of its pins did not make it through to the other side of the motherboard, causing the calculator to malfunction when outputting to its display. Fixing the issue was painfully done by resoldering, and changing the orientation of the chip. Additionally, 
+Troubleshooting these issues, I better understand how to read confusing pin diagrams and double-check the placement of components before soldering them.
 
 # First Milestone 
 
@@ -84,7 +84,8 @@ void loop() {
 -->
 
 # Bill of Materials
-
+| **Component** | **Price** | **Usecase** |
+|:--:|:--:|:--:|
 | [Arduino UNO](https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/ref=sr_1_1_sspa?crid=1V4XJ1JOA8UQQ&dib=eyJ2IjoiMSJ9.MazmhFfn-DF8W5oyX_S-tH7qkt_WuogERq_8M3-FTf6ou9kOBA5zItAmHHSDNak0z60nUJ-2lw_MGDugGZSVnD2v64TGllCLNOhouT8ifL9mqHfaVwIJIJDDQRs9U9Q6GI0IKsWWvjHtrn6FGgfvF9HdxFHV5n3_NF-uCB2HVDhXEWZqayzOWTsLbOGt6RRNKYHL0p2PgFGimKSbp3PUgKIHsKG_3F9sPSdbEpm_Qt0.sGetorRX1BiMIfXBXxhwWw8uqP5AKgpqNDL0tv2u7MA&dib_tag=se&keywords=Arduino%2BUno&qid=1718558645&sprefix=arduino%2Buno%2Caps%2C134&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1) | $29.00 | controls H-Bride, motors, and HC-05 bluetooth module|
 | [Arduino Nano R3](https://www.amazon.com/Arduino-A000005-ARDUINO-Nano/dp/B0097AU5OU/ref=sr_1_3?crid=3BTE9ZUKPU3KP&dib=eyJ2IjoiMSJ9.DuUAPNKOZx3V-ph33HzyN07Qbfpikx59bB5Qb_BiE51Vy1oguSeb8nkrcN01TQfzpxFOYkQ0osRbYSjo9mQNZ7d5f0y7HI4UOISCA6T17bofs3LnIUpj9F7gDS46r_NB804pwBNPk6KRC_QzGR63NP7N5Mv90TpOVGxTGC0CiX3HHv0L7tZndIwZ-NfyOc_kh3hcxJrGc3GcJt9puPfsJJWWbQb8dPX10zdkVEqAGgc.M1h1yLu1Q_7DRs-q3gXAiHxcTtquvqS-AqZYDMUNnVU&dib_tag=se&keywords=Arduino+Nano+R3&qid=1718558821&sprefix=%2Caps%2C162&sr=8-3) | $25.10 | controls IMU and HC-05 Bluetooth Module |
 | [*Inertial Measurement Unit (IMU)](https://www.amazon.com/Position-Temperature-Inertial-Measurement-Consumption/dp/B07P5C6D12/ref=sr_1_1?crid=BTY3JDNBIZMR&dib=eyJ2IjoiMSJ9.RMum2568J1RoNj63NCyZmJQn2J0-c4Gw4zlNowm_6-lY-joR0_B03plCLT_arZfU4fsaxagyhXBcPhDGtrLwbK-RwD4qY_tfdBPk4u2URnKYDOJXa2EIz2EYqL58QJiOW1enI6QVcGluXHInjcATpte81pfGRiuV0vHPDpQw0VJ7eIRnAOH0oy-pF93bWoY2PM-krjb1STv-_M8-YfVtqK7Hz1pMvBE17q6Wc5V23X8.AC7BD_Kve1TvqqxjaQtHmuOkWeZjIpNuBjNAoYNGH8k&dib_tag=se&keywords=Inertial+Measurement+Unit&qid=1718559135&sprefix=inertial+measurement+unit+%2Caps%2C158&sr=8-1) | $33.99 | detects tilt/orientation of hand |
