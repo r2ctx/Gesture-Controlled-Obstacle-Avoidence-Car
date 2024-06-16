@@ -4,6 +4,7 @@
 <!--- This is an HTML comment in Markdown -->
 <!--- Anything between these symbols will not render on the published site -->
 
+<link rel="stylesheet" href="style.css">
 
 | **Engineer** | **School** | **Field of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
