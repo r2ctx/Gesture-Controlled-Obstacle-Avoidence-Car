@@ -84,7 +84,7 @@ void loop() {
 
 # Bill of Materials
 | **Part** | **Note** | **Price** |
-|:--:|:--:|:--:|:--:|
+|:--:|:--:|:--:|
 |  <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/ref=sr_1_1_sspa?crid=1V4XJ1JOA8UQQ&dib=eyJ2IjoiMSJ9.MazmhFfn-DF8W5oyX_S-tH7qkt_WuogERq_8M3-FTf6ou9kOBA5zItAmHHSDNak0z60nUJ-2lw_MGDugGZSVnD2v64TGllCLNOhouT8ifL9mqHfaVwIJIJDDQRs9U9Q6GI0IKsWWvjHtrn6FGgfvF9HdxFHV5n3_NF-uCB2HVDhXEWZqayzOWTsLbOGt6RRNKYHL0p2PgFGimKSbp3PUgKIHsKG_3F9sPSdbEpm_Qt0.sGetorRX1BiMIfXBXxhwWw8uqP5AKgpqNDL0tv2u7MA&dib_tag=se&keywords=Arduino%2BUno&qid=1718558645&sprefix=arduino%2Buno%2Caps%2C134&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1"> Arduino Uno </a> | controls H-Bridge | $29.00 |
 
 | Arduino Nano R3 |   | $25.10 | <a href="https://www.amazon.com/Arduino-A000005-ARDUINO-Nano/dp/B0097AU5OU/ref=sr_1_3?crid=3BTE9ZUKPU3KP&dib=eyJ2IjoiMSJ9.DuUAPNKOZx3V-ph33HzyN07Qbfpikx59bB5Qb_BiE51Vy1oguSeb8nkrcN01TQfzpxFOYkQ0osRbYSjo9mQNZ7d5f0y7HI4UOISCA6T17bofs3LnIUpj9F7gDS46r_NB804pwBNPk6KRC_QzGR63NP7N5Mv90TpOVGxTGC0CiX3HHv0L7tZndIwZ-NfyOc_kh3hcxJrGc3GcJt9puPfsJJWWbQb8dPX10zdkVEqAGgc.M1h1yLu1Q_7DRs-q3gXAiHxcTtquvqS-AqZYDMUNnVU&dib_tag=se&keywords=Arduino+Nano+R3&qid=1718558821&sprefix=%2Caps%2C162&sr=8-3"> Link </a> |
@@ -106,8 +106,8 @@ void loop() {
 | AA Battery Holder || $6.48 | <a href="https://www.amazon.com/LAMPVPATH-Battery-Holder-Leads-Wires/dp/B07T7MTRZX/ref=sr_1_4?crid=27XSVCDQ04XPQ&dib=eyJ2IjoiMSJ9.qEkNcintEdLI7DlmrIgKa0t6ixLOOrtLG3O_WVblKOEbWwHzf5iMuQyBsK6Xj3dIZE4k5G_LaYu_HokI6zcjU6j-DsFsb8aw_8yyp81Sq4mEwToC6PyKGRODwmi3Qi_OEyRfyyqtVrLhkVzY0NOx8YbdpMKPk2BQXqLvkxRng72tectbeVGnlojkOdjP7HGUAdNbfW8TdvOU9rhTQ_XjSz6HAz5ZVKct9CAdsZd9Jyc.9-d2ifD_D9qPnp6u0yx3ZUck-JyDMgRBf25pO-qhryE&dib_tag=se&keywords=double-A+battery+holder&qid=1718559921&sprefix=double-a+battery+holde%2Caps%2C158&sr=8-4"> Link </a> |
 
 | 4 AA Batteries || $6.53 | <a href="https://www.amazon.com/Panasonic-Batteries-Carbon-Double-Battery/dp/B01MSK084Q/ref=sr_1_8?crid=2Q81QRPT0J6M3&dib=eyJ2IjoiMSJ9.iF-VDq6PgDSgOxmlvHs3LKCPAl5aL0IrvmhbaQ7IND2Lg-SE57gE9olEkCWQZCP4zOjgqC4Ogi657o4Wyk5432ged4gTx5jLhvwwa5lZHJfV_U31OSJGn0wgSt4bDYjRqimxp9HGInNM5UH436j6MQd8wLphtYOUEyECEFieIT1bp96bNHy4aqGMR6Z-JVMnuhtkICnANLCq9-Ic12yVE2NDK_q_0R533IW0t4I8NKMNPlDthV-amzTxZu0lUhcGFa7k65NLazDE96-ipQh0MGTWtrxcGJ8v0Q4IabARelQ.HOIWGrzhff07VxxN9Y3VpXyV2kcdy0dMoNw76aVHcBQ&dib_tag=se&keywords=4%2Bdouble%2Ba%2Bbatteries&qid=1718560062&sprefix=4%2Bdouble%2Ba%2Bbatterie%2Caps%2C146&sr=8-8&th=1"> Link </a> |
-<!---
 
+<!---
 # Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
 - [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
@@ -115,6 +115,5 @@ One of the best parts about Github is that you can view how other people set up 
 - [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
 
 To watch the BSE tutorial on how to create a portfolio, click here.
-
 -->
 
