@@ -80,17 +80,33 @@ void loop() {
   // put your main code here, to run repeatedly:
 
 }
-
+-->
 
 # Bill of Materials
-Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
-Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. 
-
-| **Part** | **Note** | **Price** | **Link** |
+| **Part** | **Note** | **Price** |
 |:--:|:--:|:--:|:--:|
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
+|  <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/ref=sr_1_1_sspa?crid=1V4XJ1JOA8UQQ&dib=eyJ2IjoiMSJ9.MazmhFfn-DF8W5oyX_S-tH7qkt_WuogERq_8M3-FTf6ou9kOBA5zItAmHHSDNak0z60nUJ-2lw_MGDugGZSVnD2v64TGllCLNOhouT8ifL9mqHfaVwIJIJDDQRs9U9Q6GI0IKsWWvjHtrn6FGgfvF9HdxFHV5n3_NF-uCB2HVDhXEWZqayzOWTsLbOGt6RRNKYHL0p2PgFGimKSbp3PUgKIHsKG_3F9sPSdbEpm_Qt0.sGetorRX1BiMIfXBXxhwWw8uqP5AKgpqNDL0tv2u7MA&dib_tag=se&keywords=Arduino%2BUno&qid=1718558645&sprefix=arduino%2Buno%2Caps%2C134&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1"> Arduino Uno </a> | controls H-Bridge | $29.00 |
+
+| Arduino Nano R3 |   | $25.10 | <a href="https://www.amazon.com/Arduino-A000005-ARDUINO-Nano/dp/B0097AU5OU/ref=sr_1_3?crid=3BTE9ZUKPU3KP&dib=eyJ2IjoiMSJ9.DuUAPNKOZx3V-ph33HzyN07Qbfpikx59bB5Qb_BiE51Vy1oguSeb8nkrcN01TQfzpxFOYkQ0osRbYSjo9mQNZ7d5f0y7HI4UOISCA6T17bofs3LnIUpj9F7gDS46r_NB804pwBNPk6KRC_QzGR63NP7N5Mv90TpOVGxTGC0CiX3HHv0L7tZndIwZ-NfyOc_kh3hcxJrGc3GcJt9puPfsJJWWbQb8dPX10zdkVEqAGgc.M1h1yLu1Q_7DRs-q3gXAiHxcTtquvqS-AqZYDMUNnVU&dib_tag=se&keywords=Arduino+Nano+R3&qid=1718558821&sprefix=%2Caps%2C162&sr=8-3"> Link </a> |
+
+| Inertial Measurement Unit (IMU)| What the item is used for | $33.99 | <a href="https://www.amazon.com/Position-Temperature-Inertial-Measurement-Consumption/dp/B07P5C6D12/ref=sr_1_1?crid=BTY3JDNBIZMR&dib=eyJ2IjoiMSJ9.RMum2568J1RoNj63NCyZmJQn2J0-c4Gw4zlNowm_6-lY-joR0_B03plCLT_arZfU4fsaxagyhXBcPhDGtrLwbK-RwD4qY_tfdBPk4u2URnKYDOJXa2EIz2EYqL58QJiOW1enI6QVcGluXHInjcATpte81pfGRiuV0vHPDpQw0VJ7eIRnAOH0oy-pF93bWoY2PM-krjb1STv-_M8-YfVtqK7Hz1pMvBE17q6Wc5V23X8.AC7BD_Kve1TvqqxjaQtHmuOkWeZjIpNuBjNAoYNGH8k&dib_tag=se&keywords=Inertial+Measurement+Unit&qid=1718559135&sprefix=inertial+measurement+unit+%2Caps%2C158&sr=8-1"> Link </a> |
+
+| SparkFun Dual H-Bridge motor drivers L298 || $6.99 | <a href="https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/ref=sr_1_11?crid=2I0MTAM87KGBX&dib=eyJ2IjoiMSJ9.Uhkp4V4YuMhSQCL0zp7DOagThE52qqHMItNDAg9kPKfS4JZ9iDUMvFsuc8egCwssjf00Nmxfxyw1COwlCLaQO840s3u0MaRBK3dW2mzeK09EtH_Y6zQjFbiVMiOR6CHMCZjxxXZ93QCSlXUL73DVt-llACkd2PQLRex8Ilpvbo-uW9XVpxyUhoUjUku5xPG6l9lMxXcA6tiq8r88g1YatfNdJhbmEijZns6wV6XbD0s.rbLGWtWTbYHXjq5M3tghJa95-S8XEcPOLrrsclhVZAs&dib_tag=se&keywords=SparkFun+Dual+H-Bridge+motor+drivers+L298&qid=1718559198&sprefix=sparkfun+dual+h-bridge+motor+drivers+l298%2Caps%2C149&sr=8-11"> Link </a> |
+
+| Solderless Breadboard - Half Size || $Price | <a href="https://www.amazon.com/Stemedu-Breadboards-Prototype-Solderless-Breadboard/dp/B0BZ4KF4JK/ref=sr_1_10?crid=31K4WVV63M636&dib=eyJ2IjoiMSJ9.ol9bSuFVYrleklW3sZXfs9iRXF3msGpZumce33A0qubrqp_YG3BVe53IHcN8DCgKDfzZqyW5wmDN4yQHleZ6LvG9Gwhrb3QCaezw6AaFkqBX_RcHVUiSRi-t0lXg1r2hlvZ39u-cyVsE9GBuuwnZjjaxz1OxVPbfJXyY8GcR2EmcFawWENZROQ8zqpJaw2vhavUbGj85gfFd8PQOH_AJ-hj_LmzAzX_rM7CB68b0jS0.qfupjNQ4OpnMfGF9Z79-ZdMBIiNcioY23RfehWvVO3g&dib_tag=se&keywords=Solderless+Breadboard+Half+Size&qid=1718559257&sprefix=solderless+breadboard+half+siz%2Caps%2C190&sr=8-10"> Link </a> |
+
+| HC-05 Bluetooth Module || $9.99 | <a href="https://www.amazon.com/DSD-TECH-HC-05-Pass-through-Communication/dp/B01G9KSAF6/ref=sr_1_1_sspa?crid=1Y1E63CI5V330&dib=eyJ2IjoiMSJ9.GVe7xTdQBd8ycP5WU8ZbiWWV7BFUDNGSUph0cXQjue5IrNCfv4w86s2ZhriTU5-OJz9Pb0U9ADpSaqeNpsiD3YWnwTvHbZ-nmvkVzV1bVFyk64Dg5oueYfxrOWrP8zL237YIXI3A_vZyDl57bAsJcmuQWrwh402QjpOFOgKKGrcnMTSl7FMdpn_hK2quExKVMAe-UtAj7AdCZZqAxmq9-Gn34ulNeCWXSaLgzC3rhIU.OQX71neyKQAbgDKW9kMG-jZL3uzOYHLkpEbLZs_Mp40&dib_tag=se&keywords=HC-05+Bluetooth+Module&qid=1718559342&sprefix=%2Caps%2C196&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1"> Link </a> |
+
+| Male/Female Jumper Wires || $5.94 | <a href="https://www.amazon.com/Antrader-Breadboard-Jumper-Female-Dupont/dp/B07S1NGWZL/ref=sr_1_11?crid=3LESUJRPX5UW8&dib=eyJ2IjoiMSJ9.02_pGPGJuD2vGMjk_uhq8vhAuJS6SAo1ZXmtNHywMQAIxxLYjDfrvjgqXmO3DuAsMW4OEUzxcuhDJWmZwkqQIeAg957qr2OD6UshixB3nUCkqLgL7BqL0TK6yBEb7U4WLitZQjx5RL2oyaeZsc5s28agsRXhDGNNMt4ysqbkcvAWcLlpdiImRg3YcZ-UjZiReNXROB8HWrE2nKrDcBUp9AvYvuirdc_T6fv2DTBQFbw.NSV6nidx6zjtBCVyYia79uLkmM3w7UaUvy7GrgKZbek&dib_tag=se&keywords=Male%2FMale%2BJumper%2BWires&qid=1718559400&sprefix=%2Caps%2C202&sr=8-11&th=1"> Link </a> |
+
+| Male/Male Jumper Wires || $5.49 | <a href="https://www.amazon.com/Antrader-Breadboard-Jumper-Female-Dupont/dp/B07S1NGQR1/ref=sr_1_11?crid=3LESUJRPX5UW8&dib=eyJ2IjoiMSJ9.02_pGPGJuD2vGMjk_uhq8vhAuJS6SAo1ZXmtNHywMQAIxxLYjDfrvjgqXmO3DuAsMW4OEUzxcuhDJWmZwkqQIeAg957qr2OD6UshixB3nUCkqLgL7BqL0TK6yBEb7U4WLitZQjx5RL2oyaeZsc5s28agsRXhDGNNMt4ysqbkcvAWcLlpdiImRg3YcZ-UjZiReNXROB8HWrE2nKrDcBUp9AvYvuirdc_T6fv2DTBQFbw.NSV6nidx6zjtBCVyYia79uLkmM3w7UaUvy7GrgKZbek&dib_tag=se&keywords=Male%2FMale%2BJumper%2BWires&qid=1718559400&sprefix=%2Caps%2C202&sr=8-11&th=1"> Link </a> |
+
+| Micro-motors & Wheels Bundle || $9.99 | <a href="https://www.amazon.com/Electric-Prewired-Magnetic-Gearbox-Plastic/dp/B098Q1BCX5/ref=sr_1_4?crid=3AUR4QSSP27C3&dib=eyJ2IjoiMSJ9.YcsAlopZj4g5UEJCR_rTFy8Q5BZtL8fdWl2My84Addin5BXZp0cZm_ergpOx1AsYGTFO0jD6MmS_IWXjRS98uJJjn2jJhAx90DqpRqEYTXm1HLLTJj1TZ37BGGctYbr_PIMDu_p43zRMhQCjPR4W85VQ1zBgtMfP_fZZVQvLBw_B0-HoxDbVUuU6rV_jld2MzjpyuzU5t7laDS2cN8lnLT_hwl7OqRZdUqkeoX3o7llQT-GMXTHTP4qMqNE5d7cvgFbTTeqlfBTQIOo9a298DDawsXzJqkPXGA1jb88_fE0.D2ZRStUmfVNou1-qyVP9N9i0VMV2A0KOD2u2Ptg3LDo&dib_tag=se&keywords=Micro-motors+and+wheels+kit&qid=1718559676&sprefix=micro-motors+and+wheels+k%2Caps%2C186&sr=8-4"> Link </a> |
+
+| AA Battery Holder || $6.48 | <a href="https://www.amazon.com/LAMPVPATH-Battery-Holder-Leads-Wires/dp/B07T7MTRZX/ref=sr_1_4?crid=27XSVCDQ04XPQ&dib=eyJ2IjoiMSJ9.qEkNcintEdLI7DlmrIgKa0t6ixLOOrtLG3O_WVblKOEbWwHzf5iMuQyBsK6Xj3dIZE4k5G_LaYu_HokI6zcjU6j-DsFsb8aw_8yyp81Sq4mEwToC6PyKGRODwmi3Qi_OEyRfyyqtVrLhkVzY0NOx8YbdpMKPk2BQXqLvkxRng72tectbeVGnlojkOdjP7HGUAdNbfW8TdvOU9rhTQ_XjSz6HAz5ZVKct9CAdsZd9Jyc.9-d2ifD_D9qPnp6u0yx3ZUck-JyDMgRBf25pO-qhryE&dib_tag=se&keywords=double-A+battery+holder&qid=1718559921&sprefix=double-a+battery+holde%2Caps%2C158&sr=8-4"> Link </a> |
+
+| 4 AA Batteries || $6.53 | <a href="https://www.amazon.com/Panasonic-Batteries-Carbon-Double-Battery/dp/B01MSK084Q/ref=sr_1_8?crid=2Q81QRPT0J6M3&dib=eyJ2IjoiMSJ9.iF-VDq6PgDSgOxmlvHs3LKCPAl5aL0IrvmhbaQ7IND2Lg-SE57gE9olEkCWQZCP4zOjgqC4Ogi657o4Wyk5432ged4gTx5jLhvwwa5lZHJfV_U31OSJGn0wgSt4bDYjRqimxp9HGInNM5UH436j6MQd8wLphtYOUEyECEFieIT1bp96bNHy4aqGMR6Z-JVMnuhtkICnANLCq9-Ic12yVE2NDK_q_0R533IW0t4I8NKMNPlDthV-amzTxZu0lUhcGFa7k65NLazDE96-ipQh0MGTWtrxcGJ8v0Q4IabARelQ.HOIWGrzhff07VxxN9Y3VpXyV2kcdy0dMoNw76aVHcBQ&dib_tag=se&keywords=4%2Bdouble%2Ba%2Bbatteries&qid=1718560062&sprefix=4%2Bdouble%2Ba%2Bbatterie%2Caps%2C146&sr=8-8&th=1"> Link </a> |
+<!---
 
 # Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
@@ -101,3 +117,4 @@ One of the best parts about Github is that you can view how other people set up 
 To watch the BSE tutorial on how to create a portfolio, click here.
 
 -->
+
