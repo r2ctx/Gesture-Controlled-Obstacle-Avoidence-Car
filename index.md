@@ -13,6 +13,10 @@
 |:--:|:--:|:--:|:--:|
 | Ryan Chakravarthy | Amador Valley High School | Cybersecurity | Rising Junior |
 
+<p align="center">
+<img src="IMG_8984.HEIC" alt="Profile Pic" height="300">
+</p>
+
 <!--- **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.** -->
 
 <!--- # ![Headstone Image](logo.svg) -->
