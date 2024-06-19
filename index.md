@@ -99,7 +99,7 @@ void loop() {
 }
 -->
 
-# Bill of Materials
+# Components
 <!---
 | **Component** | **Price** | **Usecase** |
 |:--:|:--:|:--:|
