@@ -17,11 +17,6 @@
 <img src="Untitled design.png" alt="Profile Pic" height="500">
 </p>
 
-*picture upload
-<p align="center">
-<img src="Untitled design.png" alt="Profile Pic" height="500">
-</p>
-
 # First Milestone 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uGJLj3cOeik?si=0w6K4q4-dV6FcpQ-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
