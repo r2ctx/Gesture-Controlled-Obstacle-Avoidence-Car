@@ -17,29 +17,26 @@
 <img src="Untitled design.png" alt="Profile Pic" height="500">
 </p>
 
-<!--- **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.** -->
-
-<!--- # ![Headstone Image](logo.svg) -->
-
-# Starter Project
-
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lBnLvlJ5_s4?si=6Fjxz9oYdJ5fjPSC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
-
-
-*Today I constructed a calculator through soldering buttons, an MPU (STC Chip), and a CR2032 battery to a motherboard. Originally, when soldering the MPU, I failed to realize that one of its pins did not make it through to the other side of the motherboard, causing the calculator to malfunction when outputting to its display. Fixing the issue was painfully done by re-soldering, and changing the chip's orientation. This was especially confusing as the instructions were unclear on the intended position of the MPU, so I had to troubleshoot by soldering it in multiple orientations until I found one that worked. After fully soldering all the components in the correct orientation, I assembled the motherboard inside its casing using small screws and nuts.
-
-
-
-
-
+*picture upload
+<p align="center">
+<img src="Untitled design.png" alt="Profile Pic" height="500">
+</p>
 
 # First Milestone 
 
-coming soon...
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uGJLj3cOeik?si=0w6K4q4-dV6FcpQ-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+
+
+
+# Starter Project
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lBnLvlJ5_s4?si=6Fjxz9oYdJ5fjPSC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+*Today I constructed a calculator through soldering buttons, an MPU (STC Chip), and a CR2032 battery to a motherboard. Originally, when soldering the MPU, I failed to realize that one of its pins did not make it through to the other side of the motherboard, causing the calculator to malfunction when outputting to its display. Fixing the issue was painfully done by re-soldering, and changing the chip's orientation. This was especially confusing as the instructions were unclear on the intended position of the MPU, so I had to troubleshoot by soldering it in multiple orientations until I found one that worked. After fully soldering all the components in the correct orientation, I assembled the motherboard inside its casing using small screws and nuts.
 
 <!---
  # Final Milestone
@@ -86,17 +83,6 @@ Here's where you'll put images of your schematics. [Tinkercad](https://www.tinke
 # Code
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
-c++
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  Serial.println("Hello World!");
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-
-}
 -->
 
 # Components
@@ -112,7 +98,7 @@ void loop() {
 | [Solderless Breadboard - Half Size](https://www.amazon.com/Stemedu-Breadboards-Prototype-Solderless-Breadboard/dp/B0BZ4KF4JK/ref=sr_1_10?crid=31K4WVV63M636&dib=eyJ2IjoiMSJ9.ol9bSuFVYrleklW3sZXfs9iRXF3msGpZumce33A0qubrqp_YG3BVe53IHcN8DCgKDfzZqyW5wmDN4yQHleZ6LvG9Gwhrb3QCaezw6AaFkqBX_RcHVUiSRi-t0lXg1r2hlvZ39u-cyVsE9GBuuwnZjjaxz1OxVPbfJXyY8GcR2EmcFawWENZROQ8zqpJaw2vhavUbGj85gfFd8PQOH_AJ-hj_LmzAzX_rM7CB68b0jS0.qfupjNQ4OpnMfGF9Z79-ZdMBIiNcioY23RfehWvVO3g&dib_tag=se&keywords=Solderless+Breadboard+Half+Size&qid=1718559257&sprefix=solderless+breadboard+half+siz%2Caps%2C190&sr=8-10) | $5.98 | base for glove components |
 | [HC-05 Bluetooth Module](https://www.amazon.com/DSD-TECH-HC-05-Pass-through-Communication/dp/B01G9KSAF6/ref=sr_1_1_sspa?crid=1Y1E63CI5V330&dib=eyJ2IjoiMSJ9.GVe7xTdQBd8ycP5WU8ZbiWWV7BFUDNGSUph0cXQjue5IrNCfv4w86s2ZhriTU5-OJz9Pb0U9ADpSaqeNpsiD3YWnwTvHbZ-nmvkVzV1bVFyk64Dg5oueYfxrOWrP8zL237YIXI3A_vZyDl57bAsJcmuQWrwh402QjpOFOgKKGrcnMTSl7FMdpn_hK2quExKVMAe-UtAj7AdCZZqAxmq9-Gn34ulNeCWXSaLgzC3rhIU.OQX71neyKQAbgDKW9kMG-jZL3uzOYHLkpEbLZs_Mp40&dib_tag=se&keywords=HC-05+Bluetooth+Module&qid=1718559342&sprefix=%2Caps%2C196&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1) | $9.99 | connects arduino and glove |
 | [*Male/Female Jumper Wires](https://www.amazon.com/Antrader-Breadboard-Jumper-Female-Dupont/dp/B07S1NGWZL/ref=sr_1_11?crid=3LESUJRPX5UW8&dib=eyJ2IjoiMSJ9.02_pGPGJuD2vGMjk_uhq8vhAuJS6SAo1ZXmtNHywMQAIxxLYjDfrvjgqXmO3DuAsMW4OEUzxcuhDJWmZwkqQIeAg957qr2OD6UshixB3nUCkqLgL7BqL0TK6yBEb7U4WLitZQjx5RL2oyaeZsc5s28agsRXhDGNNMt4ysqbkcvAWcLlpdiImRg3YcZ-UjZiReNXROB8HWrE2nKrDcBUp9AvYvuirdc_T6fv2DTBQFbw.NSV6nidx6zjtBCVyYia79uLkmM3w7UaUvy7GrgKZbek&dib_tag=se&keywords=Male%2FMale%2BJumper%2BWires&qid=1718559400&sprefix=%2Caps%2C202&sr=8-11&th=1) | $5.94 | connects Arduino and H-Bridge |
-| [*Male/Male Jumper Wires](https://www.amazon.com/Antrader-Breadboard-Jumper-Female-Dupont/dp/B07S1NGQR1/ref=sr_1_11?crid=3LESUJRPX5UW8&dib=eyJ2IjoiMSJ9.02_pGPGJuD2vGMjk_uhq8vhAuJS6SAo1ZXmtNHywMQAIxxLYjDfrvjgqXmO3DuAsMW4OEUzxcuhDJWmZwkqQIeAg957qr2OD6UshixB3nUCkqLgL7BqL0TK6yBEb7U4WLitZQjx5RL2oyaeZsc5s28agsRXhDGNNMt4ysqbkcvAWcLlpdiImRg3YcZ-UjZiReNXROB8HWrE2nKrDcBUp9AvYvuirdc_T6fv2DTBQFbw.NSV6nidx6zjtBCVyYia79uLkmM3w7UaUvy7GrgKZbek&dib_tag=se&keywords=Male%2FMale%2BJumper%2BWires&qid=1718559400&sprefix=%2Caps%2C202&sr=8-11&th=1) | $5.49 |connects motors and H-Bridge via Arduino|
+| [*Male/Male Jumper Wires](https://www.amazon.com/Antrader-Breadboard-Jumper-Female-Dupont/dp/B07S1NGQR1/ref=sr_1_11?crid=3LESUJRPX5UW8&dib=eyJ2IjoiMSJ9.02_pGPGJuD2vGMjk_uhq8vhAuJS6SAo1ZXmtNHywMQAIxxLYjDfrvjgqXmO3DuAsMW4OEUzxcuhDJWmZwkqQIeAg957qr2OD6UshixB3nUCkqLgL7BqL0TK6yBEb7U4WLitZQjx5RL2oyaeZsc5s28agsRXhDGNNMt4ysqbkcvAWcLlpdiImRg3YcZ-UjZiReNXROB8HWrE2nKrDcBUp9AvYvuirdc_T6fv2DTBQFbw.NSV6nidx6zjtBCVyYia79uLkmM3w7UaUvy7GrgKZbek&dib_tag=se&keywords=Male%2FMale%2BJumper%2BWires&qid=1718559400&sprefix=%2Caps%2C202&sr=8-11&th=1) | $5.49 | connects motors and H-Bridge via Arduino|
 | [Motors + Wheels + Base](https://www.amazon.com/MakerFocus-Chassis-MEGA2560-MEGA1280-Microcontroller/dp/B01LYZDP9U) | $19.99 | motors, wheels, and car base|
 | [AA Battery Holder](https://www.amazon.com/LAMPVPATH-Battery-Holder-Leads-Wires/dp/B07T7MTRZX/ref=sr_1_4?crid=27XSVCDQ04XPQ&dib=eyJ2IjoiMSJ9.qEkNcintEdLI7DlmrIgKa0t6ixLOOrtLG3O_WVblKOEbWwHzf5iMuQyBsK6Xj3dIZE4k5G_LaYu_HokI6zcjU6j-DsFsb8aw_8yyp81Sq4mEwToC6PyKGRODwmi3Qi_OEyRfyyqtVrLhkVzY0NOx8YbdpMKPk2BQXqLvkxRng72tectbeVGnlojkOdjP7HGUAdNbfW8TdvOU9rhTQ_XjSz6HAz5ZVKct9CAdsZd9Jyc.9-d2ifD_D9qPnp6u0yx3ZUck-JyDMgRBf25pO-qhryE&dib_tag=se&keywords=double-A+battery+holder&qid=1718559921&sprefix=double-a+battery+holde%2Caps%2C158&sr=8-4) | $6.48 | connects to H-Bridge|
 | [4 AA Bateries](https://www.amazon.com/Panasonic-Batteries-Carbon-Double-Battery/dp/B01MSK084Q/ref=sr_1_8?crid=2Q81QRPT0J6M3&dib=eyJ2IjoiMSJ9.iF-VDq6PgDSgOxmlvHs3LKCPAl5aL0IrvmhbaQ7IND2Lg-SE57gE9olEkCWQZCP4zOjgqC4Ogi657o4Wyk5432ged4gTx5jLhvwwa5lZHJfV_U31OSJGn0wgSt4bDYjRqimxp9HGInNM5UH436j6MQd8wLphtYOUEyECEFieIT1bp96bNHy4aqGMR6Z-JVMnuhtkICnANLCq9-Ic12yVE2NDK_q_0R533IW0t4I8NKMNPlDthV-amzTxZu0lUhcGFa7k65NLazDE96-ipQh0MGTWtrxcGJ8v0Q4IabARelQ.HOIWGrzhff07VxxN9Y3VpXyV2kcdy0dMoNw76aVHcBQ&dib_tag=se&keywords=4%2Bdouble%2Ba%2Bbatteries&qid=1718560062&sprefix=4%2Bdouble%2Ba%2Bbatterie%2Caps%2C146&sr=8-8&th=1) | $6.53 | powers system |
