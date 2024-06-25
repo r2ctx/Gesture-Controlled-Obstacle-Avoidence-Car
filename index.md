@@ -35,7 +35,6 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 
 
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
