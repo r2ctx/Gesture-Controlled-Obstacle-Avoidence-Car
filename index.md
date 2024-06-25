@@ -45,6 +45,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
             overflow-x: auto;
             white-space: pre;
             width: 43%
+            height: 517px;
             max-height: 550px;
         }
     </style>
