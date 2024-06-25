@@ -36,7 +36,6 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 
 # Code
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -54,7 +53,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     </style>
 </head>
 <body>
-    <h1>My Code Snippet</h1>
+    <h1>Arduino Uno & H-Bridge --> Car</h1>
     <div class="code-block">
 <pre>
 <code>
@@ -66,10 +65,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     <title>My GitHub Pages Site</title>
 </head>
 <body>
-    <h1>Welcome to My Site</h1>
-    <p>This is a scrollable code block example.</p>
-</body>
-</html>
+    <h1> Arduino Uno & H-Bridge --> Car
 </code>
  // Uno
  #include <SoftwareSerial.h>
