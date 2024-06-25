@@ -52,7 +52,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
             color: #FFFFFF; /* Set text color to white */
             padding: 10px;
            /* border: 1px solid #CCCCCC;  Example border */
-            border-radius: 5px; /* Optional: Rounded corners */
+            border-radius: 10px; /* Optional: Rounded corners */
             font-family: Consolas, Monaco, 'Andale Mono', monospace; /* Example font */
             font-size: 14px; /* Example font size */
         }
