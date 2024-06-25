@@ -62,8 +62,9 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
         <pre>
             <code> 
 <span style="color:#FFFFFF;">
-<b>Arduino Uno & H-Bridge (car)<b>
-            
+**Arduino Uno & H-Bridge (car)**
+    
+```cpp
 #include &lt;SoftwareSerial.h&gt;
 #define TXD 11
 #define RXD 10
