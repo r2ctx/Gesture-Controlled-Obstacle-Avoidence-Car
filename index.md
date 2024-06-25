@@ -44,9 +44,9 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
         .code-block {
             overflow-x: auto;
             white-space: pre;
-            width: 43%
-            height: 550px;
-            max-height: 517px;
+            width: 750px;
+            height: 475px;
+            max-height: 475px;
         }
     </style>
 </head>
@@ -164,6 +164,178 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     </div>
 </body>
 </html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Pages Site</title>
+    <style>
+        .code-block {
+            overflow-x: auto;
+            white-space: pre;
+            width: 750px;
+            height: 475px;
+            max-height: 475px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Code</h1>
+    <div class="code-block">
+        <pre>
+            <code>            
+    <font color="#FFFFFF"> 
+    #include <SoftwareSerial.h>
+
+    // Pair the HC-05 Bluetooth Module's
+    SoftwareSerial Bluetooth(11,10); //Bluetooth(TX, RX); --> Arduino Uno
+    //RX --> Receives Bluetooth signal
+    //TX --> Transmit Bluetooth signal
+
+    void setup() {
+        Serial.begin(9600);
+        Bluetooth.begin(38400); //HC-5 default speed in (AT) bluetooth mode
+    }
+
+
+    void loop() {
+    
+        if (Bluetooth.available()) {
+        Serial.write(Bluetooth.read());
+        }
+    
+        if (Serial.available()) {
+           Bluetooth.write(Serial.read());
+        }
+    }
+</font>
+            </code>
+        </pre>
+    </div>
+</body>
+</html>
+
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Pages Site</title>
+    <style>
+        .code-block {
+            overflow-x: auto;
+            white-space: pre;
+            width: 750px;
+            height: 475px;
+            max-height: 475px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Code</h1>
+    <div class="code-block">
+        <pre>
+            <code>            
+    <font color="#FFFFFF"> 
+    // Arduino Nano & Axis Accelerometer (Hand)
+    #include <SoftwareSerial.h>
+    #include <Wire.h>
+
+    const int MPU6050 = 0x68; // Motion Detector Chip
+    int flag = 0;
+    int16_t X, Y, Z;
+    
+    SoftwareSerial BT_Serial(2,3); // Bluetooth(TX, RX); --> [Arduino] (Uno & Nano) Ports
+    // RX --> Receives Bluetooth Signal
+    // TX --> Transmit Bluetooth Signal
+
+    void setup() {
+
+     Serial.begin(9600); // Initialize serial communication at 9600 bps
+     BT_Serial.begin(9600);
+     Wire.begin(); // Initializes connection between Arduino NANO at 0X6B address
+     Wire.beginTransmission(MPU6050);
+     Wire.write(0x6B); // Specifies register address (0X6B) to write on
+     Wire.write(0);
+     Wire.endTransmission(true);
+     delay(150);
+     
+    }
+
+    void loop() {
+        readAccelerometer();
+        determineGesture();
+        //delay(7.7);
+    }
+
+
+    void readAccelerometer() {
+
+        Wire.beginTransmission(MPU6050);
+        Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
+        Wire.endTransmission(false);
+        Wire.requestFrom(MPU6050, 6, true);  // request a total of 6 registers
+
+         // accelerometer orientation --> axis
+         X = Wire.read() << 8 | Wire.read(); // X - axis value
+         Y = Wire.read() << 8 | Wire.read(); // Y - axis value
+         Z = Wire.read() << 8 | Wire.read(); // Z - axis value
+
+
+         X = map(X, -17000, 17000, 0, 180);
+         Y = map(Y, -17000, 17000, 0, 180);
+         Z = map(Z, -17000, 17000, 0, 180);
+
+         Serial.print(X);
+         Serial.print("\t");
+         Serial.print(Y);
+         Serial.print("\t");
+         Serial.println(Z);
+    }
+
+    void determineGesture() {
+        if (X < 60 && flag == 0) {
+        flag = 1;
+        BT_Serial.write('^');
+    }
+
+
+    else if (X > 130 && flag == 0) {
+        flag=1;
+        BT_Serial.write('v');
+    } 
+
+    else if (Y < 60  && flag == 0) {
+        flag = 1;
+        BT_Serial.write('<');
+    }
+
+
+    else if (Y > 130 && flag == 0) {
+        flag = 1;
+        BT_Serial.write('>');
+    }
+
+    else if (X > 66 && X < 120 && Y > 66 && Y < 120 && flag == 1) {
+        flag = 0;
+        BT_Serial.write('.');
+    }
+    
+}
+
+</font>
+            </code>
+        </pre>
+    </div>
+</body>
+</html>
+
+
+
 
 
 <!---
