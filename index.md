@@ -33,6 +33,180 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 
 *Today I constructed a calculator through soldering buttons, an MPU (STC Chip), and a CR2032 battery to a motherboard. Originally, when soldering the MPU, I failed to realize that one of its pins did not make it through to the other side of the motherboard, causing the calculator to malfunction when outputting to its display. Fixing the issue was painfully done by re-soldering, and changing the chip's orientation. This was especially confusing as the instructions were unclear on the intended position of the MPU, so I had to troubleshoot by soldering it in multiple orientations until I found one that worked. After fully soldering all the components in the correct orientation, I assembled the motherboard inside its casing using small screws and nuts.
 
+
+# Code
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Pages Site</title>
+    <style>
+        .code-block {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: pre;
+            max-height: 300px; /* Adjust height as needed */
+        }
+    </style>
+</head>
+<body>
+    <h1>My Code Snippet</h1>
+    <div class="code-block">
+<pre>
+<code>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Pages Site</title>
+</head>
+<body>
+    <h1>Welcome to My Site</h1>
+    <p>This is a scrollable code block example.</p>
+</body>
+</html>
+</code>
+ // Uno
+ #include <SoftwareSerial.h>
+ #define TXD 11
+ #define RXD 10
+
+
+ SoftwareSerial BT_Serial(TXD, RXD);
+
+
+ // mapping H-Bridge outputs to ports on Arduino Uno
+ int ena = 10;
+ int IN1 = 9;
+ int IN2 = 8;
+ int IN3 = 7;
+ int IN4 = 6;
+ int speed = 150;
+ char z;
+
+ void setup() {
+
+ // Configures bluetooth and serial monitor
+ Serial.begin(9600);
+ BT_Serial.begin(9600);
+
+
+ // Sets H-Bridge ports as outputs
+ pinMode(ena, OUTPUT);
+ pinMode(IN1, OUTPUT);
+ pinMode(IN2, OUTPUT);
+ pinMode(IN3, OUTPUT);
+ pinMode(IN4, OUTPUT);
+
+ }
+
+
+void moveForward() {
+
+ digitalWrite(IN1, HIGH);
+ digitalWrite(IN2, LOW);
+ digitalWrite(IN3, HIGH);
+ digitalWrite(IN4, LOW);
+
+}
+
+
+void moveBackward() {
+
+ digitalWrite(IN1, LOW);
+ digitalWrite(IN2, HIGH);
+ digitalWrite(IN3, LOW);
+ digitalWrite(IN4, HIGH);
+
+}
+
+
+void turnLeft() {
+
+ digitalWrite(IN1, LOW);
+ digitalWrite(IN2, HIGH);
+ digitalWrite(IN3, HIGH);
+ digitalWrite(IN4, LOW);
+
+}
+
+
+void turnRight() {
+
+ digitalWrite(IN1, HIGH);
+ digitalWrite(IN2, LOW);
+ digitalWrite(IN3, LOW);
+ digitalWrite(IN4, HIGH);
+
+}
+
+
+void coast() {
+
+ digitalWrite(IN1, HIGH);
+ digitalWrite(IN2, HIGH);
+ digitalWrite(IN3, HIGH);
+ digitalWrite(IN4, HIGH);
+
+}
+
+
+void stop() {
+
+ digitalWrite(IN1, LOW);
+ digitalWrite(IN2, LOW);
+ digitalWrite(IN3, LOW);
+ digitalWrite(IN4, LOW);
+
+}
+
+
+void loop() {
+
+ // prints direction from Arduino Nano on Glove as letter
+ if (BT_Serial.available() > 0) {   
+   z = BT_Serial.read();
+   Serial.println(z);         
+ }
+
+
+ // correlates input letter to correct move method
+ switch(z) { // 'else if' equivalent
+  
+   case '^': // 'if' equivalent
+     moveForward();
+     break;
+
+
+   case 'v':
+     moveBackward();
+     break;
+    
+   case '<':
+     turnLeft();
+     break;
+    
+   case '>':
+     turnRight();
+     break;
+    
+   case '.':
+     stop();
+  }
+  
+}
+ 
+</pre>
+    </div>
+</body>
+</html>
+
+
 <!---
  # Final Milestone
 
