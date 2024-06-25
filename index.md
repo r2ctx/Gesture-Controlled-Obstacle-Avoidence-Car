@@ -49,7 +49,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
             max-height: 475px;
             background-color: #1E1E1E; /* Optional: Set background color */
             padding: 5px;
-            border: 4px solid #CCCCCC; 
+            border: 2px solid #CCCCCC; 
             border-radius: 10px; /* Optional: Rounded corners */
             font-family: Consolas, Monaco, 'Andale Mono', monospace; /* Example font */
             font-size: 14px; /* Example font size */
