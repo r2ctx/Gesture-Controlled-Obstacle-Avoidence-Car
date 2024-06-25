@@ -56,12 +56,13 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
         <pre>
             <code>            
     <font color="#FFFFFF"> 
-      
     // Arduino Uno & H-Bridge (car)
             
     #include &lt;SoftwareSerial.h&gt;
     #define TXD 11
     #define RXD 10
+
+    //defining HC-05 Inputs & Outputs
     SoftwareSerial BT_Serial(TXD, RXD);
                 
     // mapping H-Bridge outputs to ports on Arduino Uno
