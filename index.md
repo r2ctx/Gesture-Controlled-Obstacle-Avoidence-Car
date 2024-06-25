@@ -56,6 +56,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
         <pre>
             <code>            
     <font color="#FFFFFF"> 
+        
     // Arduino Uno & H-Bridge (car)
             
     #include &lt;SoftwareSerial.h&gt;
@@ -132,6 +133,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
                 
                 
     void loop() {
+    
         // prints direction from Arduino Nano on Glove as letter
         if (BT_Serial.available() > 0) {   
             z = BT_Serial.read();
@@ -139,8 +141,8 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
         }
                 
         // correlates input letter to correct move method
-        switch(z) {         // 'else if' equivalent
-            case '^':           // 'if' equivalent
+        switch(z) {                             // 'else if' equivalent
+            case '^':                           // 'if' equivalent
                 moveForward();
                 break;
             case 'v':
