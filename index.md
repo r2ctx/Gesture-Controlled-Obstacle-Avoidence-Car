@@ -42,8 +42,6 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     <title>My GitHub Pages Site</title>
     <style>
         .code-block {
-            overflow-x: auto;
-            white-space: pre;
             width: 750px;
             height: 475px;
             max-height: 475px;
@@ -159,13 +157,11 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
                 break;
          }
     }
-    
-</font>
             </code>
         </pre>
     </div>
-</body>
-</html>
+    </body>
+    </html>
 
 
 <!---
