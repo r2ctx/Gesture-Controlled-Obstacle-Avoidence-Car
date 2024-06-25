@@ -141,8 +141,8 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
         }
                 
         // correlates input letter to correct move method
-        switch(z) {                             // 'else if' equivalent
-            case '^':                           // 'if' equivalent
+        switch(z) {                                         // 'else if' equivalent
+            case '^':                                       // 'if' equivalent
                 moveForward();
                 break;
             case 'v':
@@ -192,13 +192,15 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     #include <SoftwareSerial.h>
 
     // Pair the HC-05 Bluetooth Module's
-    SoftwareSerial Bluetooth(11,10); //Bluetooth(TX, RX); --> Arduino Uno
-    //RX --> Receives Bluetooth signal
-    //TX --> Transmit Bluetooth signal
+    
+    SoftwareSerial Bluetooth(11,10); 
+    // Bluetooth(TX, RX); --> Arduino Uno
+    // RX --> Receives Bluetooth signal
+    // TX --> Transmits Bluetooth signal
 
     void setup() {
         Serial.begin(9600);
-        Bluetooth.begin(38400); //HC-5 default speed in (AT) bluetooth mode
+        Bluetooth.begin(38400); // HC-05 speed begin at _
     }
 
 
@@ -211,6 +213,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
         if (Serial.available()) {
            Bluetooth.write(Serial.read());
         }
+        
     }
 </font>
             </code>
