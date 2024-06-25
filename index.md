@@ -35,6 +35,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 
 
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,9 +43,18 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     <title>My GitHub Pages Site</title>
     <style>
         .code-block {
+            overflow-x: auto;
+            white-space: pre;
             width: 750px;
             height: 475px;
             max-height: 475px;
+            background-color: #1E1E1E; /* Optional: Set background color */
+            color: #FFFFFF; /* Set text color to white */
+            padding: 10px;
+            border: 1px solid #CCCCCC; /* Example border */
+            border-radius: 5px; /* Optional: Rounded corners */
+            font-family: Consolas, Monaco, 'Andale Mono', monospace; /* Example font */
+            font-size: 14px; /* Example font size */
         }
     </style>
 </head>
@@ -53,115 +63,114 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     <div class="code-block">
         <pre>
             <code>            
-    <font color="#FFFFFF"> 
-        
-    Arduino Uno & H-Bridge (car):
+Arduino Uno & H-Bridge (car):
             
-    #include <SoftwareSerial.h>
-    #define TXD 11
-    #define RXD 10
+#include &lt;SoftwareSerial.h&gt;
+#define TXD 11
+#define RXD 10
 
-    //defining HC-05 Inputs & Outputs
-    SoftwareSerial BT_Serial(TXD, RXD);
+//defining HC-05 Inputs & Outputs
+SoftwareSerial BT_Serial(TXD, RXD);
                 
-    // mapping H-Bridge outputs to ports on Arduino Uno
-    int ena = 10;
-    int IN1 = 9;
-    int IN2 = 8;
-    int IN3 = 7;
-    int IN4 = 6;
-    char z;
+// mapping H-Bridge outputs to ports on Arduino Uno
+int ena = 10;
+int IN1 = 9;
+int IN2 = 8;
+int IN3 = 7;
+int IN4 = 6;
+char z;
                 
-    void setup() {
+void setup() {
             
-       // Configures bluetooth and serial monitor
-       Serial.begin(9600);
-       BT_Serial.begin(9600);
+   // Configures bluetooth and serial monitor
+   Serial.begin(9600);
+   BT_Serial.begin(9600);
                 
-       // Sets H-Bridge ports as outputs
-       pinMode(ena, OUTPUT);
-       pinMode(IN1, OUTPUT);
-       pinMode(IN2, OUTPUT);
-       pinMode(IN3, OUTPUT);
-       pinMode(IN4, OUTPUT);
+   // Sets H-Bridge ports as outputs
+   pinMode(ena, OUTPUT);
+   pinMode(IN1, OUTPUT);
+   pinMode(IN2, OUTPUT);
+   pinMode(IN3, OUTPUT);
+   pinMode(IN4, OUTPUT);
                 
-    }
+}
                 
-    void moveForward() {
-        digitalWrite(IN1, HIGH);
-        digitalWrite(IN2, LOW);
-        digitalWrite(IN3, HIGH);
-        digitalWrite(IN4, LOW);
-    }
+void moveForward() {
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, HIGH);
+    digitalWrite(IN4, LOW);
+}
                 
-    void moveBackward() {
-        digitalWrite(IN1, LOW);
-        digitalWrite(IN2, HIGH);
-        digitalWrite(IN3, LOW);
-        digitalWrite(IN4, HIGH);
-    }
+void moveBackward() {
+    digitalWrite(IN1, LOW);
+    digitalWrite(IN2, HIGH);
+    digitalWrite(IN3, LOW);
+    digitalWrite(IN4, HIGH);
+}
                 
-    void turnLeft() {          
-       digitalWrite(IN1, LOW);
-       digitalWrite(IN2, HIGH);
-       digitalWrite(IN3, HIGH);
-       digitalWrite(IN4, LOW);          
-    }
+void turnLeft() {          
+   digitalWrite(IN1, LOW);
+   digitalWrite(IN2, HIGH);
+   digitalWrite(IN3, HIGH);
+   digitalWrite(IN4, LOW);          
+}
                 
-    void turnRight() {
-        digitalWrite(IN1, HIGH);
-        digitalWrite(IN2, LOW);
-        digitalWrite(IN3, LOW);
-        digitalWrite(IN4, HIGH);
-    }
+void turnRight() {
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, LOW);
+    digitalWrite(IN4, HIGH);
+}
                 
-    *void coast() {            
-        digitalWrite(IN1, HIGH);
-        digitalWrite(IN2, HIGH);
-        digitalWrite(IN3, HIGH);
-        digitalWrite(IN4, HIGH);      
-    }
+void coast() {            
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, HIGH);
+    digitalWrite(IN3, HIGH);
+    digitalWrite(IN4, HIGH);      
+}
                 
-    void stop() {      
-        digitalWrite(IN1, LOW);
-        digitalWrite(IN2, LOW);
-        digitalWrite(IN3, LOW);
-        digitalWrite(IN4, LOW);
-    }
+void stop() {      
+    digitalWrite(IN1, LOW);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, LOW);
+    digitalWrite(IN4, LOW);
+}
                 
                 
-    void loop() {
+void loop() {
     
-        // Prints direction from Arduino Nano
-        if (BT_Serial.available() > 0) {   
-            z = BT_Serial.read();
-            Serial.println(z);         
-        }
-                
-        // Correlates input letter to correct move method
-        switch(z) {                                         // 'else if' equivalent
-            case '^':                                       // 'if' equivalent
-                moveForward();
-                break;
-            case 'v':
-                moveBackward();
-                break;
-            case '<':
-                turnLeft();
-                break;
-            case '>':
-                turnRight();
-                break;
-             case '.':
-                stop();
-                break;
-         }
+    // Prints direction from Arduino Nano
+    if (BT_Serial.available() > 0) {   
+        z = BT_Serial.read();
+        Serial.println(z);         
     }
+                
+    // Correlates input letter to correct move method
+    switch(z) {                                         // 'else if' equivalent
+        case '^':                                       // 'if' equivalent
+            moveForward();
+            break;
+        case 'v':
+            moveBackward();
+            break;
+        case '<':
+            turnLeft();
+            break;
+        case '>':
+            turnRight();
+            break;
+         case '.':
+            stop();
+            break;
+     }
+}
             </code>
         </pre>
     </div>
-    </body>
-    </html>
+</body>
+</html>
+
 
 
 <!---
