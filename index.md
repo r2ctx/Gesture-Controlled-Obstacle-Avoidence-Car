@@ -57,9 +57,9 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
             <code>            
     <font color="#FFFFFF"> 
         
-    // Arduino Uno & H-Bridge (car)
+    Arduino Uno & H-Bridge (car):
             
-    #include &lt;SoftwareSerial.h&gt;
+    #include <SoftwareSerial.h>
     #define TXD 11
     #define RXD 10
 
@@ -167,7 +167,6 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 </body>
 </html>
 
-&nbsp;
 
 <html lang="en">
 <head>
@@ -189,14 +188,13 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
         <pre>
             <code>            
     <font color="#FFFFFF"> 
-    #include <SoftwareSerial.h>
+        
+    Pair the HC-05 Bluetooth Module's:
 
-    // Pair the HC-05 Bluetooth Module's
-    
-    SoftwareSerial Bluetooth(11,10); 
-    // Bluetooth(TX, RX); --> Arduino Uno
-    // RX --> Receives Bluetooth signal
-    // TX --> Transmits Bluetooth signal
+    #include <SoftwareSerial.h>
+    #define TXD 11
+    #define RXD 10
+    SoftwareSerial BT_Serial(TXD, RXD);
 
     void setup() {
         Serial.begin(9600);
