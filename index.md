@@ -219,6 +219,8 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 
 
 
+<!---
+
 
 <html lang="en">
 <head>
@@ -333,6 +335,10 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     </div>
 </body>
 </html>
+
+--> 
+
+
 
 
 
