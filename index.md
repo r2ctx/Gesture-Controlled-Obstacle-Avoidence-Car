@@ -60,7 +60,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     <h1>Code</h1>
     <div class="code-block">
         <pre>
-           <span style="color:#FFFFFF;"> <b>Arduino Uno & H-Bridge (car)</b> </span>
+<span style="color:#FFFFFF;"> <b>Arduino Uno & H-Bridge (car)</b> </span>
             <code> 
 <span style="color:#FFFFFF;">
 #include &lt;SoftwareSerial.h&gt;
