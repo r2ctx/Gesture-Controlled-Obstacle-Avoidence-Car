@@ -41,9 +41,6 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     <title>My GitHub Pages Site</title>
     <style>
         .code-block {
-            padding: 10px;
-            border: 1px solid #ddd;
-            padding: 10px;
             overflow-x: auto;
             white-space: pre;
             max-height: 500px; 
@@ -132,7 +129,6 @@ void stop() {
                 
                 
 void loop() {
-
     // prints direction from Arduino Nano on Glove as letter
     if (BT_Serial.available() > 0) {   
         z = BT_Serial.read();
