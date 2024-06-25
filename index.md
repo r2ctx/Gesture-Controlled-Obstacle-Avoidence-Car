@@ -221,7 +221,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 
 
 
-<!---
+
 
 
 <html lang="en">
@@ -302,35 +302,33 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     }
 
     void determineGesture() {
-        if (X < 60 && flag == 0) {
-        flag = 1;
-        BT_Serial.write('^');
-    }
-
-
-    else if (X > 130 && flag == 0) {
-        flag=1;
-        BT_Serial.write('v');
-    } 
-
-    else if (Y < 60  && flag == 0) {
-        flag = 1;
-        BT_Serial.write('<');
-    }
-
-
-    else if (Y > 130 && flag == 0) {
-        flag = 1;
-        BT_Serial.write('>');
-    }
-
-    else if (X > 66 && X < 120 && Y > 66 && Y < 120 && flag == 1) {
-        flag = 0;
-        BT_Serial.write('.');
-    }
     
-}
+        if (X < 60 && flag == 0) {
+            flag = 1;
+            BT_Serial.write('^');
+        }
 
+        else if (X > 130 && flag == 0) {
+            flag=1;
+            BT_Serial.write('v');
+        } 
+
+        else if (Y < 60  && flag == 0) {
+            flag = 1;
+            BT_Serial.write('<');
+        }
+
+
+        else if (Y > 130 && flag == 0) {
+            flag = 1;
+            BT_Serial.write('>');
+        }
+
+        else if (X > 66 && X < 120 && Y > 66 && Y < 120 && flag == 1) {
+            flag = 0;
+            BT_Serial.write('.');
+        }   
+    }
 </font>
             </code>
         </pre>
@@ -338,7 +336,6 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 </body>
 </html>
 
---> 
 
 
 
