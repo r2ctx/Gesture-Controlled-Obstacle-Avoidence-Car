@@ -29,15 +29,11 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PngfwoImU6A?si=Sr4rgwN2wUguZjp-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
- - built the controller Breadboard: w/ Arduino Nano HC-05, and Axis Aceleometer
- - paried HC-05 Bluetooth Modules using AT Commands: 'master' and 'slave'
-     - RX and TX on Bluetooth: Recieve and Transmit pins
-     - Serial monitor (^,V,<,>) and Axis Acceleometer X,Y,Z 
-     - specific method for initiating bluetooth
+I built the controller for the car using a half-size soughterless breadboard, with an HC-05 Bluetooth Module, and MPU6050 Axis Accelerametor, and an Arduino Nano. I then wired the GND and 3.3V on the HC-05, as well as the RXD and TXD pins for trasmitting and reciving data to the Arduino Nano. Next, I wired the MPU6050 with 5V and GND on the Arduino Nano, along with the SCL and SDA pins for sycronizing I2C communication with and transferring data between the MPU6050 and the Arduino Nano. Then on the car I wired up the HC-05 much the same, with the RXD and TXD pins plugged into the Arduino Uno. With both Bluetooth Module's correctly wired up, I bonded them using AT Commands setting the controler as the 'master', and the car as the 'slave'. (AT Binding with Bluetooth HC-05/ Bluetooth Methods/Serial Monitor) --> Envoke car move method.
 
-
-
-
+<!---
+After finding the slave's ip address using 'AT+ADDR=?', I binded 
+-->
 
 # First Milestone 
 
