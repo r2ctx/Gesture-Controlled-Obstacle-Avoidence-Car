@@ -18,18 +18,20 @@
 </p>
 
 
-# Third Milestone 
- - swapped battery connection to H-Brdige, as connection via Arduino was limiting voltage accesibilty throughout the car
- - added switch to ovverride power on the car
+# Third Milestone
  - created move methods for all directions
- - mapped move methods to Bluetooth Logic 
+ - mapped move methods to Bluetooth Logic
+ - UltraSonic Sensorsr.,ew2j1hq2jwelr;tyhkl;
+ 
 
 # Second Milestone
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PngfwoImU6A?si=Sr4rgwN2wUguZjp-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-I built the controller for the car using a half-size soughterless breadboard, with an HC-05 Bluetooth Module, and MPU6050 Axis Accelerametor, and an Arduino Nano. I then wired the GND and 3.3V on the HC-05, as well as the RXD and TXD pins for trasmitting and reciving data to the Arduino Nano. Next, I wired the MPU6050 with 5V and GND on the Arduino Nano, along with the SCL and SDA pins for sycronizing I2C communication with and transferring data between the MPU6050 and the Arduino Nano. Then on the car I wired up the HC-05 much the same, with the RXD and TXD pins plugged into the Arduino Uno. With both Bluetooth Module's correctly wired up, I bonded them using AT Commands setting the controler as the 'master', and the car as the 'slave'. (AT Binding with Bluetooth HC-05/ Bluetooth Methods/Serial Monitor) --> Envoke car move method.
+I built the controller for the car using a half-size soughterless breadboard, with an HC-05 Bluetooth Module, and MPU6050 Axis Accelerametor, and an Arduino Nano. I then wired the GND and 3.3V on the HC-05, as well as the RXD and TXD pins for trasmitting and reciving data to the Arduino Nano. Next, I wired the MPU6050 with 5V and GND on the Arduino Nano, along with the SCL and SDA pins for sycronizing I2C communication with and transferring data between the MPU6050 and the Arduino Nano. Then on the car I wired up the HC-05 much the same, with the RXD and TXD pins plugged into the Arduino Uno. With both Bluetooth Module's correctly wired up, I bonded them using AT Commands setting the controler as the 'master', and the car as the 'slave'. Firstly, I used the 
+
+(AT Binding with Bluetooth HC-05/ Bluetooth Methods/Serial Monitor) --> Envoke car move method.
 
 <!---
 After finding the slave's ip address using 'AT+ADDR=?', I binded 
@@ -252,6 +254,10 @@ Here's where you'll put your code. The syntax below places it into a block of co
 | [HC-05 Bluetooth Module](https://www.amazon.com/DSD-TECH-HC-05-Pass-through-Communication/dp/B01G9KSAF6/ref=sr_1_1_sspa?crid=1Y1E63CI5V330&dib=eyJ2IjoiMSJ9.GVe7xTdQBd8ycP5WU8ZbiWWV7BFUDNGSUph0cXQjue5IrNCfv4w86s2ZhriTU5-OJz9Pb0U9ADpSaqeNpsiD3YWnwTvHbZ-nmvkVzV1bVFyk64Dg5oueYfxrOWrP8zL237YIXI3A_vZyDl57bAsJcmuQWrwh402QjpOFOgKKGrcnMTSl7FMdpn_hK2quExKVMAe-UtAj7AdCZZqAxmq9-Gn34ulNeCWXSaLgzC3rhIU.OQX71neyKQAbgDKW9kMG-jZL3uzOYHLkpEbLZs_Mp40&dib_tag=se&keywords=HC-05+Bluetooth+Module&qid=1718559342&sprefix=%2Caps%2C196&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1) | $9.99 | connects arduino and glove |
 | [Motors + Wheels + Base](https://www.amazon.com/MakerFocus-Chassis-MEGA2560-MEGA1280-Microcontroller/dp/B01LYZDP9U) | $19.99 | motors, wheels, and car base|
 | [Set of Male/Female Connectors](https://www.amazon.com/ZYAMY-120PCS-Connector-Multicolor-Breadboard/dp/B0742RS6YL/ref=sr_1_1?crid=21S67LIQJEWBY&dib=eyJ2IjoiMSJ9.6XXe8GsCSvJz4ezKFLOnW-HQzxR-V2K194UJ-mxTqdj2IQK47UrDg8c5hx-iURTM9tfb-yR55yjIX6FyOV6Saz018AALKek67BQYE3IK9KJ8q6-NQwRGilZG4sddccCYQFdpqwOt-IVS3K3dydlE9S00nuo_koy2p2SQl26k3I7IbRyj0UWL_oZYWHrktBL8LTzAOfq3pEvmB2pp1X7IsfGmUFvCkkZKpyMc0ZsverIYJtFwqGgb4am0GYW-JimuUnvqxIHt9IXO1QVmJVCmcYnpT7G5EiDEoOSseFkmRis.Q-IH9PSHqskX_Ygs1CwrJdzY-PRUXOPF3_y1eRq3ppw&dib_tag=se&keywords=set+of+male-male%2C+male-female%2C+and+female-female+wires+short&qid=1719345645&s=industrial&sprefix=set+of+male-male%2C+male-female%2C+and+female-female+wires+sho%2Cindustrial%2C125&sr=1-1) | $7.39 | for wiring all components |
+| [Joyick for Arduino](https://www.amazon.com/Teyleten-Robot-Dual-axis-Controller-Raspberry/dp/B0CPFDKWZF/ref=sr_1_1?crid=2721KLBYAXK0G&dib=eyJ2IjoiMSJ9.6zfYPy2SA893_1p8cYE-sIZkQ1viGapkKtMLPZjCAjQ8vES9HHRSoqsmhSHrlRjIxPp7B0cXty-XvziLGNDGuTC0Fn9cXxn1q0tp-5Mhxln_x6R4on7tz44M6RAKrVhjH985Q1YehejohUhNxtX_z8ILEXmCS-10-0kHjKWuVoic1SF2XzAJmXbP13rGMxsrEV-ak1WZ-TB6jeQibC_BwLMPHEcjLvbfsJ5RxVeYBkk.eTPb36RxXUA1hGNGLGKPh-fwYLmvGOpG0BYJ02620KM&dib_tag=se&keywords=joystick+arduino&qid=1720730419&sprefix=joystick+arduion%2Caps%2C181&sr=8-1) |
+$9.88 | joystick control of car |
+| [Ultrasonic Sensor(s)](https://www.amazon.com/WWZMDiB-HC-SR04-Ultrasonic-Distance-Measuring/dp/B0B1MJJLJP/ref=sr_1_5?crid=9ZJP8VRZSJFF&dib=eyJ2IjoiMSJ9.hxKSGnm38uFYPbLd-yrIsGKtiigcjiHBIR4HeBGiJvRLTXVkrQVm2-2X9h0DX4IGZYcDIy5GlwZ6-_r_mPVsFAWYOWj4DIl5qoKw5z9-69Yu_s0Iod1JUacucsC7zRfGCgBi6MWbRNOOrfNnCJls21sZ5X92RuBO0Mdgc9F1zcVC3jLL--a2XxVReiEoJ0M9A2H0lylYhk3uxuJ2ve1swutQGgGFlIVTbD0YsDVd3Ro.uaMr3MvshBPzwS6EHg3CTlKfFCI2Ru2EEpGKw5yudtA&dib_tag=se&keywords=ultrasonic%2Bsensors&qid=1720730628&sprefix=ultrasonic%2Bsensor%2Caps%2C135&sr=8-5&th=1) | $6.99 | object detection
+
 | [Set of 9V Batteries](https://www.amazon.com/AmazonBasics-Volt-Everyday-Alkaline-Battery/dp/B081FGCRQQ/ref=sr_1_15?dib=eyJ2IjoiMSJ9.LzVLI_Okv1aX44UDnl3M2wmckTFUx_wn4DFEVq1jt6YlixM49-Dq2GivmKD_qLibdVrEYkwQ74PpweLVb6f2Xr2GWLnFspellT-4_hm4FkLx56zpk7QSCtV-Fr9e6D7FQ1n4j4gJPO-Fb0reQDnu-6ViykwxP4FhbfvKNscLOV2GoBnbhaMoWehGGJuywcp-b2co2zi7lsxd24VsHs2gbmAGbIlv0pBE8vsc2MBGj9y8HKhzkRJVl5Et1Gx-9WtfvBQjazPVUK1ZE6DdXSfam88xlshMOfFU5XPv0IBAxgI.RZD4uSFrxVaVkImhVBpiNDLvRXCt1TmHMf5dHMxwNgU&dib_tag=se&keywords=Set+of+9V+Batteries&qid=1719345894&sr=8-15) | $10.99 | delivers power via H-Bride 12V+ and GND |
 | [*On/Off Rocker Switch](https://www.amazon.com/5Pcs-Rocker-Switch-Position-QTEATAK/dp/B07Y1GDRQG/ref=sr_1_6?crid=784YWU3U28U4&dib=eyJ2IjoiMSJ9.1fYIrtWoaUU8xQPki0E5sT2OfE4-ax56S4xw1AsDXmeTIsVCMEIi4_g188cCbXwpZoBib8H8wszaEjj17ScudtUZdYqCpNk57H1LPajCaJCa0VQgT_CPHr7vVDKtWzkFx90KD6wtyA94BXBbokSvMTEIW616yi-ls65Pw6coKq940gHlF_bdeBDCaR_V5AvTcALSpXFEbAp_O5yF4f1PHU2-FqlqAa7s_RYU7YUI2tQ.lFgIkO4RTLgCELY6sZbl7zhuJ79C9JduWUhVAvC2cCA&dib_tag=se&keywords=rocker+switch&qid=1718562620&sprefix=rcoker+switch+%2Caps%2C145&sr=8-6) | $6.99 | *optional* power button |
 
