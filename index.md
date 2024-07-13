@@ -141,6 +141,302 @@ Here's where you'll put your code. The syntax below places it into a block of co
 | [Binding HC-05 Bluetooth Module's - Instructables](https://www.instructables.com/AT-command-mode-of-HC-05-Bluetooth-module/) |
 | [How to Wire and Program a Button - Arduino Documentation](https://docs.arduino.cc/built-in-examples/digital/Button/) |
 
+## Code
+Arduino Uno
+
+```c++
+#include <Wire.h>
+#include <SoftwareSerial.h>
+
+// Bluetooth
+#define TXD 11
+#define RXD 10
+SoftwareSerial BT_Serial(TXD, RXD);
+// Ultrasonic
+#define TRIG1 2
+#define ECHO1 4
+#define TRIG2 5
+#define ECHO2 3
+
+// Maps H-Bridge --> Uno ports
+int IN1 = 9;
+int IN2 = 8;
+int IN3 = 7;
+int IN4 = 6;
+char z;
+
+void setup() {
+
+   // Configures bluetooth and serial monitor
+   Serial.begin(9600);
+   BT_Serial.begin(9600);
+
+   // H-Bridge ports to outputs
+   pinMode(IN1, OUTPUT);
+   pinMode(IN2, OUTPUT);
+   pinMode(IN3, OUTPUT);
+   pinMode(IN4, OUTPUT);
+
+   // Ultrasonic pin declaration
+   pinMode(TRIG1, OUTPUT);
+   pinMode(ECHO1, INPUT);
+   pinMode(TRIG2, OUTPUT);
+   pinMode(ECHO2, INPUT);
+
+}
 
 
+void moveForward() {
+   digitalWrite(IN1, HIGH);
+   digitalWrite(IN2, LOW);
+   digitalWrite(IN3, HIGH);
+   digitalWrite(IN4, LOW);
+}
+
+void moveBackward() {
+   digitalWrite(IN1, LOW);
+   digitalWrite(IN2, HIGH);
+   digitalWrite(IN3, LOW);
+   digitalWrite(IN4, HIGH);
+}
+
+void turnLeft() {
+   digitalWrite(IN1, LOW);
+   digitalWrite(IN2, HIGH);
+   digitalWrite(IN3, HIGH);
+   digitalWrite(IN4, LOW);
+}
+
+void turnRight() {
+   digitalWrite(IN1, HIGH);
+   digitalWrite(IN2, LOW);
+   digitalWrite(IN3, LOW);
+   digitalWrite(IN4, HIGH);
+}
+
+void stop() {
+   digitalWrite(IN1, LOW);
+   digitalWrite(IN2, LOW);
+   digitalWrite(IN3, LOW);
+   digitalWrite(IN4, LOW);
+}
+
+// Front UltraSonic Sensor
+bool ultraSonic1() {
+
+   digitalWrite(TRIG1, LOW);
+   digitalWrite(TRIG1, HIGH);
+   digitalWrite(TRIG1, LOW);
+
+    // Calculates distance
+   long duration = pulseIn(ECHO1, HIGH);
+   float distance = duration * 0.034 / 2;
+
+   if (distance < 15 || distance > 1175) {
+       return true;
+   }
+   return false;
+}
+
+// Backwards UltraSonic Sesnor
+bool ultraSonic2() {
+
+   digitalWrite(TRIG2, LOW);
+   digitalWrite(TRIG2, HIGH);
+   digitalWrite(TRIG2, LOW);
+
+   // Calculates distance
+   long duration = pulseIn(ECHO2, HIGH);
+   float distance = duration * 0.034 / 2;
+
+   if (distance < 15 || distance > 1175) {
+     return true;
+   }
+   return false;
+}
+
+void determineGesture() {
+
+   if (BT_Serial.available() > 0) {
+     z = BT_Serial.read();     
+   }
+
+   switch(z) { 
+
+    case '^':
+      if (!ultraSonic1()) {
+      moveForward();
+      }
+      else {
+        stop();
+      }
+      break;
+  
+    case 'v':
+      if (!ultraSonic2()) {
+      moveBackward();
+      }
+      else {
+       stop();
+      }
+      break;
+
+    case '<':
+      turnLeft();
+      break;
+
+    case '>':
+      turnRight();
+      break;
+
+    case '.':
+      stop();
+ }
+
+}
+
+void loop() {
+ determineGesture();
+}
+
+```
+
+Arduino Nano
+
+```c++
+#include <SoftwareSerial.h>
+#include <Wire.h>
+#define SW2 A3
+#define VRx A2
+#define VRy A1
+#define SW1 A0
+#define BTN 6 // Button 
+
+
+const int MPU6050 = 0x68; // Motion Detector Chip
+int flag = 0;
+int16_t X, Y, Z;
+int b = 0;
+
+// previous button state
+int counter = 0;
+
+SoftwareSerial BT_Serial(2,3); 
+// RX --> Receives Bluetooth Signal
+// TX --> Transmit Bluetooth Signal
+
+void setup() {
+Serial.begin(9600); // Initialize serial communication at 9600 bps
+BT_Serial.begin(9600);
+Wire.begin(); // Initilizes connection between Arduino NANO at 0X6B address
+Wire.beginTransmission(MPU6050);
+Wire.write(0x6B); // Specifies register address (0X6B) to write on
+Wire.write(0);
+Wire.endTransmission(true);
+pinMode(BTN, INPUT);
+}
+
+
+void loop() {
+ determineInput();
+}
+
+
+void readAccelerometer() {
+
+Wire.beginTransmission(MPU6050);
+Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
+Wire.endTransmission(false);
+Wire.requestFrom(MPU6050, 6, true);  // request a total of 6 registers
+
+// accelerometer orientation --> axis
+X = Wire.read() << 8 | Wire.read(); // X - axis value
+Y = Wire.read() << 8 | Wire.read(); // Y - axis value
+Z = Wire.read() << 8 | Wire.read(); // Z - axis value
+
+X = map(X, -17000, 17000, 0, 180);
+Y = map(Y, -17000, 17000, 0, 180);
+Z = map(Z, -17000, 17000, 0, 180);
+
+}
+
+
+void motionGesture() {
+
+readAccelerometer();
+
+
+if (X < 60 && flag == 0) {
+ flag = 1;
+ BT_Serial.write('v');
+}
+else if (X > 130 && flag == 0) {
+ flag=1;
+ BT_Serial.write('^');
+}
+else if (Y < 60  && flag == 0) {
+ flag = 1;
+ BT_Serial.write('>');
+}
+else if (Y > 130 && flag == 0) {
+ flag = 1;
+ BT_Serial.write('<');
+}
+else if (X > 66 && X < 120 && Y > 66 && Y < 120 && flag == 1) {
+ flag = 0;
+ BT_Serial.write('.');
+  }
+
+}
+void joyStick() {
+
+ int X = analogRead(VRx);
+ int Y = analogRead(VRy);
+ int Z1 = digitalRead(SW1);
+ int Z2 = digitalRead(SW2);
+
+  if (X >= 0 && X <= 60) {
+   BT_Serial.write('v');
+  }
+  else if (X >= 1020 && X <=1030) {
+    BT_Serial.write('^');
+  }
+  else if (Y >= 1020 && Y <= 1030) {
+    BT_Serial.write('>');
+  }
+  else if (Y >= 0 && Y <= 5) {
+    BT_Serial.write('<');
+  }
+  else {
+    BT_Serial.write('.');
+  }
+  
+}
+
+// Button alternater 
+void determineInput() {
+
+ // Current button state
+ int a = digitalRead(BTN);
+
+ // Making sure the button is changing value from 0 to 1:
+ // if button is clicked
+ if (a == 0 && b == 1) {
+   counter++;
+ }
+
+ b = a;
+
+ if (counter % 2 == 0) {
+     motionGesture();
+     Serial.println("motion");
+ }
+ else {
+     joyStick();
+     Serial.println("joystick");
+ }
+
+}
+
+```
 
