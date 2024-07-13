@@ -83,104 +83,157 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
             <code> 
 <span style="color:#FFFFFF;">
 #include &lt;SoftwareSerial.h&gt;
+#include <Wire.h>
+
+// Bluetooth
 #define TXD 11
 #define RXD 10
-
-//defining HC-05 Inputs & Outputs
 SoftwareSerial BT_Serial(TXD, RXD);
-                
-// mapping H-Bridge outputs to ports on Arduino Uno
-int ena = 10;
+// Ultrasonic
+#define TRIG1 2
+#define ECHO1 4
+#define TRIG2 5
+#define ECHO2 3
+
+// Maps H-Bridge --> Uno ports
 int IN1 = 9;
 int IN2 = 8;
 int IN3 = 7;
 int IN4 = 6;
 char z;
-                
+
 void setup() {
-            
+
    // Configures bluetooth and serial monitor
    Serial.begin(9600);
    BT_Serial.begin(9600);
-                
-   // Sets H-Bridge ports as outputs
-   pinMode(ena, OUTPUT);
+
+   // H-Bridge ports to outputs
    pinMode(IN1, OUTPUT);
    pinMode(IN2, OUTPUT);
    pinMode(IN3, OUTPUT);
    pinMode(IN4, OUTPUT);
-                
+
+   // Ultrasonic pin declaration
+   pinMode(TRIG1, OUTPUT);
+   pinMode(ECHO1, INPUT);
+   pinMode(TRIG2, OUTPUT);
+   pinMode(ECHO2, INPUT);
+
 }
-                
+
+
 void moveForward() {
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, LOW);
-    digitalWrite(IN3, HIGH);
-    digitalWrite(IN4, LOW);
+   digitalWrite(IN1, HIGH);
+   digitalWrite(IN2, LOW);
+   digitalWrite(IN3, HIGH);
+   digitalWrite(IN4, LOW);
 }
-                
+
 void moveBackward() {
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
+   digitalWrite(IN1, LOW);
+   digitalWrite(IN2, HIGH);
+   digitalWrite(IN3, LOW);
+   digitalWrite(IN4, HIGH);
 }
-                
-void turnLeft() {          
+
+void turnLeft() {
    digitalWrite(IN1, LOW);
    digitalWrite(IN2, HIGH);
    digitalWrite(IN3, HIGH);
-   digitalWrite(IN4, LOW);          
+   digitalWrite(IN4, LOW);
 }
-                
+
 void turnRight() {
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, LOW);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
+   digitalWrite(IN1, HIGH);
+   digitalWrite(IN2, LOW);
+   digitalWrite(IN3, LOW);
+   digitalWrite(IN4, HIGH);
 }
-                
-void coast() {            
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, HIGH);
-    digitalWrite(IN4, HIGH);      
+
+void stop() {
+   digitalWrite(IN1, LOW);
+   digitalWrite(IN2, LOW);
+   digitalWrite(IN3, LOW);
+   digitalWrite(IN4, LOW);
 }
-                
-void stop() {      
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, LOW);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, LOW);
+
+// Front UltraSonic Sensor
+bool ultraSonic1() {
+
+   digitalWrite(TRIG1, LOW);
+   digitalWrite(TRIG1, HIGH);
+   digitalWrite(TRIG1, LOW);
+
+    // Calculates distance
+   long duration = pulseIn(ECHO1, HIGH);
+   float distance = duration * 0.034 / 2;
+
+   if (distance < 15 || distance > 1175) {
+       return true;
+   }
+   return false;
 }
-                
-                
+
+// Backwards UltraSonic Sesnor
+bool ultraSonic2() {
+
+   digitalWrite(TRIG2, LOW);
+   digitalWrite(TRIG2, HIGH);
+   digitalWrite(TRIG2, LOW);
+
+   // Calculates distance
+   long duration = pulseIn(ECHO2, HIGH);
+   float distance = duration * 0.034 / 2;
+
+   if (distance < 15 || distance > 1175) {
+     return true;
+   }
+   return false;
+}
+
+void determineGesture() {
+
+   if (BT_Serial.available() > 0) {
+     z = BT_Serial.read();     
+   }
+
+   switch(z) { 
+
+    case '^':
+      if (!ultraSonic1()) {
+      moveForward();
+      }
+      else {
+        stop();
+      }
+      break;
+  
+    case 'v':
+      if (!ultraSonic2()) {
+      moveBackward();
+      }
+      else {
+       stop();
+      }
+      break;
+
+    case '<':
+      turnLeft();
+      break;
+
+    case '>':
+      turnRight();
+      break;
+
+    case '.':
+      stop();
+ }
+
+}
+
 void loop() {
-    
-    // Prints direction from Arduino Nano
-    if (BT_Serial.available() > 0) {   
-        z = BT_Serial.read();
-        Serial.println(z);         
-    }
-                
-    // Correlates input letter to correct move method
-    switch(z) {                                         // 'else if' equivalent
-        case '^':                                       // 'if' equivalent
-            moveForward();
-            break;
-        case 'v':
-            moveBackward();
-            break;
-        case '<':
-            turnLeft();
-            break;
-        case '>':
-            turnRight();
-            break;
-         case '.':
-            stop();
-            break;
-     }
+ determineGesture();
 }
 </span>
             </code>
