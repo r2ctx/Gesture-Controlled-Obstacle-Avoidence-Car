@@ -152,8 +152,8 @@ Here's where you'll put your code. The syntax below places it into a block of co
             overflow-x: auto;
             white-space: pre;
             width: 750px;
-            height: 950px; /* Increased height to accommodate both code segments */
-            max-height: 950px;
+            height: 800px; /* Increased height to accommodate both code segments */
+            max-height: 800px;
             background-color: #1E1E1E; /* Changed background color */
             padding: 5px;
             border: 2px solid #CCCCCC;
