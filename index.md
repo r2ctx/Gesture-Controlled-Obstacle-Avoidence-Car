@@ -154,6 +154,7 @@ Here's where you'll put your code. The syntax below places it into a block of co
             width: 750px;
             height: 950px; /* Increased height to accommodate both code segments */
             max-height: 950px;
+            background: #180808;
             padding: 5px;
             border: 2px solid #CCCCCC;
             border-radius: 10px;
