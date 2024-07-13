@@ -54,9 +54,9 @@ After finding the slave's ip address using 'AT+ADDR=?', I binded
 In building the Gesture Controlled Robot, my first milestone encompassed building the car's base, and wiring up all necessary electrical components (boards) to ensure the car was physically functional. I first began by wiring the IN ports on the H-Bridge controller to digital ports on the Arduino Uno. Next, I connected the motors to the terminals on the H-Bridge Controller (OUT1, OUT2, OUT3, OUT4) in a criss-cross orientation. I then connected 4 AA Batteries to the 12V+ and GND terminals on the H-Bridge, which I also wired up to the VIN and GND ports on the Arduino Uno, thus powering the entire car. Furthermore, I connected the Arduino Uno to my laptop via USB type B and uploaded a C++ program using Arduino IDE. In setup(), I defined the numbered ports on the Arduino UNO by the inputs they were connected to on the H-Bridge (ex. IN1) and defined each port's pintype as an output or input using pinMode(). Then in loop(), I sent a digital signal using digitalWrite() and set the IN ports on the H-Brige controller to a HIGH or LOW signal, correctly distributing voltage between motors enabling them to all turn forward.
 
 
-# Arduino Uno Code
+# Code
 <details>
-  <summary>Click to expand</summary>
+  <summary>Arduino Uno</summary>
   <pre><code>
 #include <Wire.h>
 #include <SoftwareSerial.h>
@@ -202,9 +202,9 @@ void loop() {
   </code></pre>
 </details>
 
-# Arduino Nano Code
+
 <details>
-  <summary>Click to expand</summary>
+  <summary>Arduino Nano</summary>
   <pre><code>
 #include <SoftwareSerial.h>
 #include <Wire.h>
