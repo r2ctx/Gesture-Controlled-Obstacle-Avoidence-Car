@@ -133,12 +133,36 @@ Here's where you'll put your code. The syntax below places it into a block of co
 
 -->
 
-&nbsp;
-
-# Code
-Arduino Uno
-
-```c++
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Pages Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+    <style>
+        .code-block {
+            overflow-x: auto;
+            white-space: pre;
+            width: 750px;
+            height: 475px;
+            max-height: 475px;
+            background-color: #1E1E1E;
+            padding: 5px;
+            border: 2px solid #CCCCCC;
+            border-radius: 10px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            font-size: 14px;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Arduino Uno Code</h1>
+    <details>
+        <summary>Click to expand</summary>
+        <div class="code-block">
+            <pre><code class="c++">
 #include <Wire.h>
 #include <SoftwareSerial.h>
 
@@ -152,7 +176,7 @@ SoftwareSerial BT_Serial(TXD, RXD);
 #define TRIG2 5
 #define ECHO2 3
 
-// Maps H-Bridge --> Uno ports
+// map H-Bridge outputs to Uno ports
 int IN1 = 9;
 int IN2 = 8;
 int IN3 = 7;
@@ -160,8 +184,7 @@ int IN4 = 6;
 char z;
 
 void setup() {
-
-   // Configures bluetooth and serial monitor
+   // Configures bluetooth and baud rate
    Serial.begin(9600);
    BT_Serial.begin(9600);
 
@@ -176,9 +199,7 @@ void setup() {
    pinMode(ECHO1, INPUT);
    pinMode(TRIG2, OUTPUT);
    pinMode(ECHO2, INPUT);
-
 }
-
 
 void moveForward() {
    digitalWrite(IN1, HIGH);
@@ -194,14 +215,14 @@ void moveBackward() {
    digitalWrite(IN4, HIGH);
 }
 
-void turnLeft() {
+void turnLeft1() {
    digitalWrite(IN1, LOW);
    digitalWrite(IN2, HIGH);
    digitalWrite(IN3, HIGH);
    digitalWrite(IN4, LOW);
 }
 
-void turnRight() {
+void turnRight1() {
    digitalWrite(IN1, HIGH);
    digitalWrite(IN2, LOW);
    digitalWrite(IN3, LOW);
@@ -215,14 +236,13 @@ void stop() {
    digitalWrite(IN4, LOW);
 }
 
-// Front UltraSonic Sensor
+//Front UltraSonic Sensor
 bool ultraSonic1() {
-
    digitalWrite(TRIG1, LOW);
    digitalWrite(TRIG1, HIGH);
    digitalWrite(TRIG1, LOW);
 
-    // Calculates distance
+    // Calculate distance
    long duration = pulseIn(ECHO1, HIGH);
    float distance = duration * 0.034 / 2;
 
@@ -232,14 +252,13 @@ bool ultraSonic1() {
    return false;
 }
 
-// Backwards UltraSonic Sesnor
+//Back UltraSonic
 bool ultraSonic2() {
-
    digitalWrite(TRIG2, LOW);
    digitalWrite(TRIG2, HIGH);
    digitalWrite(TRIG2, LOW);
 
-   // Calculates distance
+   // Calculate distance
    long duration = pulseIn(ECHO2, HIGH);
    float distance = duration * 0.034 / 2;
 
@@ -250,13 +269,11 @@ bool ultraSonic2() {
 }
 
 void determineGesture() {
-
    if (BT_Serial.available() > 0) {
      z = BT_Serial.read();     
    }
 
    switch(z) { 
-
     case '^':
       if (!ultraSonic1()) {
       moveForward();
@@ -265,7 +282,6 @@ void determineGesture() {
         stop();
       }
       break;
-  
     case 'v':
       if (!ultraSonic2()) {
       moveBackward();
@@ -274,38 +290,37 @@ void determineGesture() {
        stop();
       }
       break;
-
     case '<':
-      turnLeft();
+      turnLeft1();
       break;
-
     case '>':
-      turnRight();
+      turnRight1();
       break;
-
     case '.':
       stop();
  }
-
 }
 
 void loop() {
  determineGesture();
 }
+            </code></pre>
+        </div>
+    </details>
 
-```
-
-Arduino Nano
-
-```c++
+    <h1>Arduino Nano Code</h1>
+    <details>
+        <summary>Click to expand</summary>
+        <div class="code-block">
+            <pre><code class="c++">
 #include <SoftwareSerial.h>
 #include <Wire.h>
 #define SW2 A3
 #define VRx A2
 #define VRy A1
 #define SW1 A0
+// controller switch
 #define BTN 6 // Button 
-
 
 const int MPU6050 = 0x68; // Motion Detector Chip
 int flag = 0;
@@ -315,7 +330,7 @@ int b = 0;
 // previous button state
 int counter = 0;
 
-SoftwareSerial BT_Serial(2,3); 
+SoftwareSerial BT_Serial(2,3); // Bluetooth(TX, RX); --> [Arduino] (Uno & Nano) Ports
 // RX --> Receives Bluetooth Signal
 // TX --> Transmit Bluetooth Signal
 
@@ -330,14 +345,12 @@ Wire.endTransmission(true);
 pinMode(BTN, INPUT);
 }
 
-
 void loop() {
+ //joyStick();
  determineInput();
 }
 
-
 void readAccelerometer() {
-
 Wire.beginTransmission(MPU6050);
 Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
 Wire.endTransmission(false);
@@ -351,14 +364,10 @@ Z = Wire.read() << 8 | Wire.read(); // Z - axis value
 X = map(X, -17000, 17000, 0, 180);
 Y = map(Y, -17000, 17000, 0, 180);
 Z = map(Z, -17000, 17000, 0, 180);
-
 }
 
-
 void motionGesture() {
-
 readAccelerometer();
-
 
 if (X < 60 && flag == 0) {
  flag = 1;
@@ -380,10 +389,10 @@ else if (X > 66 && X < 120 && Y > 66 && Y < 120 && flag == 1) {
  flag = 0;
  BT_Serial.write('.');
   }
-
 }
-void joyStick() {
 
+//for some reason Arduion Uno and Nano are reading different values from the same joystick
+void joyStick() {
  int X = analogRead(VRx);
  int Y = analogRead(VRy);
  int Z1 = digitalRead(SW1);
@@ -404,21 +413,17 @@ void joyStick() {
   else {
     BT_Serial.write('.');
   }
-  
 }
 
-// Button alternater 
+// aka button alternater 
 void determineInput() {
-
- // Current button state
+ //current button state
  int a = digitalRead(BTN);
-
- // Making sure the button is changing value from 0 to 1:
+  // making sure the button is changing value from 0 to 1:
  // if button is clicked
  if (a == 0 && b == 1) {
    counter++;
  }
-
  b = a;
 
  if (counter % 2 == 0) {
@@ -428,11 +433,14 @@ void determineInput() {
  else {
      joyStick();
      Serial.println("joystick");
- }
-
 }
+            </code></pre>
+        </div>
+    </details>
 
-```
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll
+
 
 # Resources
 
