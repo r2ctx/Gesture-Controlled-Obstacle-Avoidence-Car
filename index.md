@@ -36,7 +36,6 @@ In the video, I worked on getting the base of the car
 
 # Second Milestone
 
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PngfwoImU6A?si=Sr4rgwN2wUguZjp-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 I built the controller for the car using a half-size soughterless breadboard, with an HC-05 Bluetooth Module, and MPU6050 Axis Accelerametor, and an Arduino Nano. I then wired the GND and 3.3V on the HC-05, as well as the RXD and TXD pins for trasmitting and reciving data to the Arduino Nano. Next, I wired the MPU6050 with 5V and GND on the Arduino Nano, along with the SCL and SDA pins for sycronizing I2C communication with and transferring data between the MPU6050 and the Arduino Nano. Then on the car I wired up the HC-05 much the same, with the RXD and TXD pins plugged into the Arduino Uno. With both Bluetooth Module's correctly wired up, I bonded them using AT Commands setting the controler as the 'master', and the car as the 'slave'. Firstly, I used the 
@@ -138,9 +137,9 @@ Here's where you'll put your code. The syntax below places it into a block of co
 
 # Resources
 
-[Hand Gesture Control Robot Via bluetooth - Hackster.io](https://www.hackster.io/embeddedlab786/hand-gesture-control-robot-via-bluetooth-94b13d)
-[Binding HC-05 Bluetooth Module's - Instructables](https://www.instructables.com/AT-command-mode-of-HC-05-Bluetooth-module/)
-[How to Wire and Program a Button - Arduino Documentation](https://docs.arduino.cc/built-in-examples/digital/Button/)
+| [Hand Gesture Control Robot Via bluetooth - Hackster.io](https://www.hackster.io/embeddedlab786/hand-gesture-control-robot-via-bluetooth-94b13d) |
+| [Binding HC-05 Bluetooth Module's - Instructables](https://www.instructables.com/AT-command-mode-of-HC-05-Bluetooth-module/) |
+| [How to Wire and Program a Button - Arduino Documentation](https://docs.arduino.cc/built-in-examples/digital/Button/) |
 
 
 
