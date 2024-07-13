@@ -197,9 +197,8 @@ void determineGesture() {
    if (BT_Serial.available() > 0) {
      z = BT_Serial.read();     
    }
-
+   
    switch(z) { 
-
     case '^':
       if (!ultraSonic1()) {
       moveForward();
@@ -208,7 +207,6 @@ void determineGesture() {
         stop();
       }
       break;
-  
     case 'v':
       if (!ultraSonic2()) {
       moveBackward();
@@ -217,24 +215,20 @@ void determineGesture() {
        stop();
       }
       break;
-
     case '<':
       turnLeft();
       break;
-
     case '>':
       turnRight();
       break;
-
     case '.':
       stop();
  }
-
 }
-
 void loop() {
  determineGesture();
 }
+
 </span>
             </code>
         </pre>
