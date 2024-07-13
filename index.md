@@ -74,15 +74,16 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
             font-family: Consolas, Monaco, 'Andale Mono', monospace; /* Example font */
             font-size: 14px; /* Example font size */
         }
+        .code-text {
+            color: #FFFFFF;
+        }
     </style>
 </head>
 <body>
     <h1>Arduino Uno Code</h1>
     <div class="code-block">
-        <pre>
-<span style="color:#FFFFFF;"><b>Arduino Uno & H-Bridge (car)</b></span>
-            <code> 
-<span style="color:#FFFFFF;">
+        <pre class="code-text"><b>Arduino Uno & H-Bridge (car)</b>
+<code>
 #include <Wire.h>
 #include <SoftwareSerial.h>
 
@@ -103,9 +104,7 @@ int IN3 = 7;
 int IN4 = 6;
 char z;
 
-
 void setup() {
-
    // Configures bluetooth and baud rate
    Serial.begin(9600);
    BT_Serial.begin(9600);
@@ -121,7 +120,6 @@ void setup() {
    pinMode(ECHO1, INPUT);
    pinMode(TRIG2, OUTPUT);
    pinMode(ECHO2, INPUT);
-
 }
 
 void moveForward() {
@@ -161,7 +159,6 @@ void stop() {
 
 //Front UltraSonic Sensor
 bool ultraSonic1() {
-
    digitalWrite(TRIG1, LOW);
    digitalWrite(TRIG1, HIGH);
    digitalWrite(TRIG1, LOW);
@@ -178,7 +175,6 @@ bool ultraSonic1() {
 
 //Back UltraSonic
 bool ultraSonic2() {
-
    digitalWrite(TRIG2, LOW);
    digitalWrite(TRIG2, HIGH);
    digitalWrite(TRIG2, LOW);
@@ -194,13 +190,11 @@ bool ultraSonic2() {
 }
 
 void determineGesture() {
-
    if (BT_Serial.available() > 0) {
      z = BT_Serial.read();     
    }
 
    switch(z) { 
-
     case '^':
       if (!ultraSonic1()) {
       moveForward();
@@ -229,25 +223,20 @@ void determineGesture() {
 
     case '.':
       stop();
- }
-
+   }
 }
 
 void loop() {
  determineGesture();
 }
-
-</span>
-            </code>
+</code>
         </pre>
     </div>
 
     <h1>Arduino Nano Code</h1>
     <div class="code-block">
-        <pre>
-<span style="color:#FFFFFF;"><b>Arduino Uno & H-Bridge (car)</b></span>
-            <code> 
-<span style="color:#FFFFFF;">
+        <pre class="code-text"><b>Arduino Uno & H-Bridge (car)</b>
+<code>
 #include <SoftwareSerial.h>
 #include <Wire.h>
 #define SW2 A3
@@ -256,7 +245,6 @@ void loop() {
 #define SW1 A0
 // controller switch
 #define BTN 6 // Button 
-
 
 const int MPU6050 = 0x68; // Motion Detector Chip
 int flag = 0;
@@ -281,15 +269,12 @@ Wire.endTransmission(true);
 pinMode(BTN, INPUT);
 }
 
-
 void loop() {
  //joyStick();
  determineInput();
 }
 
-
 void readAccelerometer() {
-
 Wire.beginTransmission(MPU6050);
 Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
 Wire.endTransmission(false);
@@ -303,14 +288,10 @@ Z = Wire.read() << 8 | Wire.read(); // Z - axis value
 X = map(X, -17000, 17000, 0, 180);
 Y = map(Y, -17000, 17000, 0, 180);
 Z = map(Z, -17000, 17000, 0, 180);
-
 }
 
-
 void motionGesture() {
-
 readAccelerometer();
-
 
 if (X < 60 && flag == 0) {
  flag = 1;
@@ -332,12 +313,10 @@ else if (X > 66 && X < 120 && Y > 66 && Y < 120 && flag == 1) {
  flag = 0;
  BT_Serial.write('.');
   }
-
 }
 
-//for some reason Arduion Uno and Nano are reading different values from the same joystick
+//for some reason Arduino Uno and Nano are reading different values from the same joystick
 void joyStick() {
-
  int X = analogRead(VRx);
  int Y = analogRead(VRy);
  int Z1 = digitalRead(SW1);
@@ -358,12 +337,10 @@ void joyStick() {
   else {
     BT_Serial.write('.');
   }
-  
 }
 
 // aka button alternater 
 void determineInput() {
-
  //current button state
  int a = digitalRead(BTN);
   // making sure the button is changing value from 0 to 1:
@@ -378,15 +355,12 @@ void determineInput() {
      motionGesture();
      Serial.println("motion");
  }
- 
  else {
      joyStick();
      Serial.println("joystick");
  }
- 
 }
-</span>
-            </code>
+</code>
         </pre>
     </div>
 </body>
