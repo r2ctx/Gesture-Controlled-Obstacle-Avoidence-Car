@@ -133,6 +133,14 @@ Here's where you'll put your code. The syntax below places it into a block of co
 
 -->
 
+
+# Resources
+
+| [Hand Gesture Control Robot Via bluetooth](https://www.hackster.io/embeddedlab786/hand-gesture-control-robot-via-bluetooth-94b13d) |
+| [Binding HC-05 Bluetooth Module's](https://www.instructables.com/AT-command-mode-of-HC-05-Bluetooth-module/) |
+| [How to Wire and Program a Button](https://docs.arduino.cc/built-in-examples/digital/Button/) |
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,13 +155,11 @@ Here's where you'll put your code. The syntax below places it into a block of co
             width: 750px;
             height: 950px; /* Increased height to accommodate both code segments */
             max-height: 950px;
-            background-color: #1E1E1E;
             padding: 5px;
             border: 2px solid #CCCCCC;
             border-radius: 10px;
             font-family: Consolas, Monaco, 'Andale Mono', monospace;
-            font-size: 14px;
-            color: #FFFFFF;
+            font-size: 14px;    
         }
     </style>
 </head>
@@ -433,12 +439,4 @@ void determineInput() {
    <script>hljs.highlightAll();</script>
 </body>
 </html>
-
-
-
-# Resources
-
-| [Hand Gesture Control Robot Via bluetooth](https://www.hackster.io/embeddedlab786/hand-gesture-control-robot-via-bluetooth-94b13d) | Hackster.io |
-| [Binding HC-05 Bluetooth Module's](https://www.instructables.com/AT-command-mode-of-HC-05-Bluetooth-module/) | Instructables |
-| [How to Wire and Program a Button](https://docs.arduino.cc/built-in-examples/digital/Button/) | Arduino Documentation |
 
