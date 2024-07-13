@@ -150,10 +150,11 @@ Here's where you'll put your code. The syntax below places it into a block of co
     <style>
         .code-block {
             overflow-x: auto;
-            width: 600px;
-            height: 400px; /* Increased height to accommodate both code segments */
-            max-height: 400px;
+            width: 750px;
+            height: 600px; /* Increased height to accommodate both code segments */
+            max-height: 600px;
             padding: 5px;
+            background: #180808;
             border: 2px solid #CCCCCC;
             border-radius: 10px;
             font-family: Consolas, Monaco, 'Andale Mono', monospace;
@@ -162,7 +163,7 @@ Here's where you'll put your code. The syntax below places it into a block of co
     </style>
 </head>
 <body>
-    <h1>Combined Code Segments</h1>
+    <h1>Final Code</h1>
     <div class="code-block">
         <pre><code class="c++">
 /* Arduino Uno Code */
@@ -277,6 +278,7 @@ void determineGesture() {
    }
 
    switch(z) { 
+   
     case '^':
       if (!ultraSonic1()) {
       moveForward();
@@ -285,6 +287,7 @@ void determineGesture() {
         stop();
       }
       break;
+      
     case 'v':
       if (!ultraSonic2()) {
       moveBackward();
@@ -293,15 +296,20 @@ void determineGesture() {
        stop();
       }
       break;
+      
     case '<':
       turnLeft1();
       break;
+      
     case '>':
       turnRight1();
       break;
+      
     case '.':
       stop();
+      break;
  }
+ 
 }
 
 void loop() {
@@ -430,9 +438,9 @@ void determineInput() {
      joyStick();
      Serial.println("joystick");
 }
+        
         </code></pre>
     </div>
-
    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
    <script>hljs.highlightAll();</script>
 </body>
