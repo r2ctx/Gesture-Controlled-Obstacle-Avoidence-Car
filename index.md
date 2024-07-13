@@ -141,7 +141,6 @@ Here's where you'll put your code. The syntax below places it into a block of co
 | [How to Wire and Program a Button](https://docs.arduino.cc/built-in-examples/digital/Button/) |
 
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
