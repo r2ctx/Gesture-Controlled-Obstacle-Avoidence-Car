@@ -239,6 +239,7 @@ void determineGesture() {
 void loop() {
  determineGesture();
 }
+
 </span>
             </code>
         </pre>
