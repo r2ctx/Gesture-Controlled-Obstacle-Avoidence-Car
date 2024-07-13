@@ -150,11 +150,9 @@ Here's where you'll put your code. The syntax below places it into a block of co
     <style>
         .code-block {
             overflow-x: auto;
-            white-space: pre;
-            width: 750px;
-            height: 950px; /* Increased height to accommodate both code segments */
-            max-height: 950px;
-            background: #180808;
+            width: 600px;
+            height: 400px; /* Increased height to accommodate both code segments */
+            max-height: 400px;
             padding: 5px;
             border: 2px solid #CCCCCC;
             border-radius: 10px;
