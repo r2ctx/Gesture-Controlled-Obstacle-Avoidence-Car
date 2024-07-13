@@ -55,11 +55,6 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 
 
 
-# Starter Project
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lBnLvlJ5_s4?si=6Fjxz9oYdJ5fjPSC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-*Today I constructed a calculator through soldering buttons, an MPU (STC Chip), and a CR2032 battery to a motherboard. Originally, when soldering the MPU, I failed to realize that one of its pins did not make it through to the other side of the motherboard, causing the calculator to malfunction when outputting to its display. Fixing the issue was painfully done by re-soldering, and changing the chip's orientation. This was especially confusing as the instructions were unclear on the intended position of the MPU, so I had to troubleshoot by soldering it in multiple orientations until I found one that worked. After fully soldering all the components in the correct orientation, I assembled the motherboard inside its casing using small screws and nuts.
 
 
 
@@ -91,105 +86,158 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 <span style="color:#FFFFFF;"><b>Arduino Uno & H-Bridge (car)</b></span>
             <code> 
 <span style="color:#FFFFFF;">
-#include &lt;SoftwareSerial.h&gt;
+#include <Wire.h>
+#include <SoftwareSerial.h>
+
+// Bluetooth
 #define TXD 11
 #define RXD 10
-
-//defining HC-05 Inputs & Outputs
 SoftwareSerial BT_Serial(TXD, RXD);
-                
-// mapping H-Bridge outputs to ports on Arduino Uno
-int ena = 10;
+// Ultrasonic
+#define TRIG1 2
+#define ECHO1 4
+#define TRIG2 5
+#define ECHO2 3
+
+// map H-Bridge outputs to Uno ports
 int IN1 = 9;
 int IN2 = 8;
 int IN3 = 7;
 int IN4 = 6;
 char z;
-                
+
+
 void setup() {
-            
-   // Configures bluetooth and serial monitor
+
+   // Configures bluetooth and baud rate
    Serial.begin(9600);
    BT_Serial.begin(9600);
-                
-   // Sets H-Bridge ports as outputs
-   pinMode(ena, OUTPUT);
+
+   // H-Bridge ports to outputs
    pinMode(IN1, OUTPUT);
    pinMode(IN2, OUTPUT);
    pinMode(IN3, OUTPUT);
    pinMode(IN4, OUTPUT);
-                
+
+   // Ultrasonic pin declaration
+   pinMode(TRIG1, OUTPUT);
+   pinMode(ECHO1, INPUT);
+   pinMode(TRIG2, OUTPUT);
+   pinMode(ECHO2, INPUT);
+
 }
-                
+
 void moveForward() {
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, LOW);
-    digitalWrite(IN3, HIGH);
-    digitalWrite(IN4, LOW);
+   digitalWrite(IN1, HIGH);
+   digitalWrite(IN2, LOW);
+   digitalWrite(IN3, HIGH);
+   digitalWrite(IN4, LOW);
 }
-                
+
 void moveBackward() {
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
+   digitalWrite(IN1, LOW);
+   digitalWrite(IN2, HIGH);
+   digitalWrite(IN3, LOW);
+   digitalWrite(IN4, HIGH);
 }
-                
-void turnLeft() {          
+
+void turnLeft1() {
    digitalWrite(IN1, LOW);
    digitalWrite(IN2, HIGH);
    digitalWrite(IN3, HIGH);
-   digitalWrite(IN4, LOW);          
+   digitalWrite(IN4, LOW);
 }
-                
-void turnRight() {
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, LOW);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
+
+void turnRight1() {
+   digitalWrite(IN1, HIGH);
+   digitalWrite(IN2, LOW);
+   digitalWrite(IN3, LOW);
+   digitalWrite(IN4, HIGH);
 }
-                
-void coast() {            
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, HIGH);
-    digitalWrite(IN4, HIGH);      
+
+void stop() {
+   digitalWrite(IN1, LOW);
+   digitalWrite(IN2, LOW);
+   digitalWrite(IN3, LOW);
+   digitalWrite(IN4, LOW);
 }
-                
-void stop() {      
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, LOW);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, LOW);
+
+//Front UltraSonic Sensor
+bool ultraSonic1() {
+
+   digitalWrite(TRIG1, LOW);
+   digitalWrite(TRIG1, HIGH);
+   digitalWrite(TRIG1, LOW);
+
+    // Calculate distance
+   long duration = pulseIn(ECHO1, HIGH);
+   float distance = duration * 0.034 / 2;
+
+   if (distance < 15 || distance > 1175) {
+       return true;
+   }
+   return false;
 }
-                
-                
+
+//Back UltraSonic
+bool ultraSonic2() {
+
+   digitalWrite(TRIG2, LOW);
+   digitalWrite(TRIG2, HIGH);
+   digitalWrite(TRIG2, LOW);
+
+   // Calculate distance
+   long duration = pulseIn(ECHO2, HIGH);
+   float distance = duration * 0.034 / 2;
+
+   if (distance < 15 || distance > 1175) {
+     return true;
+   }
+   return false;
+}
+
+void determineGesture() {
+
+   if (BT_Serial.available() > 0) {
+     z = BT_Serial.read();     
+   }
+
+   switch(z) { 
+
+    case '^':
+      if (!ultraSonic1()) {
+      moveForward();
+      }
+      else {
+        stop();
+      }
+      break;
+  
+    case 'v':
+      if (!ultraSonic2()) {
+      moveBackward();
+      }
+      else {
+       stop();
+      }
+      break;
+
+    case '<':
+      turnLeft1();
+      break;
+
+    case '>':
+      turnRight1();
+      break;
+
+    case '.':
+      stop();
+ }
+
+}
+
 void loop() {
-    
-    // Prints direction from Arduino Nano
-    if (BT_Serial.available() > 0) {   
-        z = BT_Serial.read();
-        Serial.println(z);         
-    }
-                
-    // Correlates input letter to correct move method
-    switch(z) {                                         // 'else if' equivalent
-        case '^':                                       // 'if' equivalent
-            moveForward();
-            break;
-        case 'v':
-            moveBackward();
-            break;
-        case '<':
-            turnLeft();
-            break;
-        case '>':
-            turnRight();
-            break;
-         case '.':
-            stop();
-            break;
-     }
+ determineGesture();
 }
 </span>
             </code>
@@ -410,6 +458,13 @@ $9.88 | alternate controller |
 | [Micro USB Cable](https://www.amazon.com/Braided-Charging-Compatible-Controller-Microphone/dp/B0B3J6RD34/ref=sr_1_14?crid=2YQBYUGH259IQ&dib=eyJ2IjoiMSJ9.f9NYn_Pp6FspnGAravIPXUZauuNB4JTty_d5vJncfcvd069SnYXXAY9fL_mMSZUusQlly-ID6lafuF6Af--hmTLMYbS6LYDkMA_x8tbuLNVaMDUeBErzQbQdoWhPhzcxzbS4Rjq_4iOm_sUzyH3jA6c9UpHFhOmW6G1y2Mv_CqtiUCPSnqirp0HtTDsSnuRYsnJZuLx8SWnyKQW2JzLgk7tVjBaSbxEmX7-zZ9BjH2Y.-UC7-3So9eFHBK-wXy_0XJyRGeaCNyfe-O9aQIq--yY&dib_tag=se&keywords=USB+B+to+A+and+mini+USB+to+A+bundle&qid=1720893654&sprefix=usb+b+to+a+and+mini+usb+to+a+bundle%2Caps%2C143&sr=8-14) | $4.99 | connect Arduino Nano to Computer |
 | [USB Type B](https://www.amazon.com/Monoprice-6-Feet-24AWG-Plated-105438/dp/B003BXPQF2/ref=sr_1_8?crid=2YUWBTC59H9Z5&dib=eyJ2IjoiMSJ9.hCC1scuHFhmHD3CfyTe_zLUECEvKqGhh9tXOxP0XsrFyfKOw1Si4xoF5FdOEEPZ6shBCewBfdqtfkicwyangDoHa5-4548AduMsw-Xw_HXdEIWvDT2g9hjc9c0YUgWiaK5U6KzcYuH3RmdEaNSPn675SPUd1iLlwqx1cFVEjJE-QVs-nvN70x6TElmgkWdIO48kJjATvYM4tpQHLl_rpiE05o_BRIm2O4w_OMngOP78.gz8eJIIGjAvfE2MfE0SQf4vDTUvhvhvLxsJtBHzGmqY&dib_tag=se&keywords=USB+B+to+A&qid=1720893787&sprefix=usb+b+to+a+and+mini+usb+to+a+bundle%2Caps%2C167&sr=8-8) | $3.89 | connect Arduino Uno to computer |
 
+
+
+# Starter Project
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lBnLvlJ5_s4?si=6Fjxz9oYdJ5fjPSC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+*Today I constructed a calculator through soldering buttons, an MPU (STC Chip), and a CR2032 battery to a motherboard. Originally, when soldering the MPU, I failed to realize that one of its pins did not make it through to the other side of the motherboard, causing the calculator to malfunction when outputting to its display. Fixing the issue was painfully done by re-soldering, and changing the chip's orientation. This was especially confusing as the instructions were unclear on the intended position of the MPU, so I had to troubleshoot by soldering it in multiple orientations until I found one that worked. After fully soldering all the components in the correct orientation, I assembled the motherboard inside its casing using small screws and nuts.
 
 
 
