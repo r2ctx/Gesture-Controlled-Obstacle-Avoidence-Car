@@ -54,10 +54,7 @@ After finding the slave's ip address using 'AT+ADDR=?', I binded
 In building the Gesture Controlled Robot, my first milestone encompassed building the car's base, and wiring up all necessary electrical components (boards) to ensure the car was physically functional. I first began by wiring the IN ports on the H-Bridge controller to digital ports on the Arduino Uno. Next, I connected the motors to the terminals on the H-Bridge Controller (OUT1, OUT2, OUT3, OUT4) in a criss-cross orientation. I then connected 4 AA Batteries to the 12V+ and GND terminals on the H-Bridge, which I also wired up to the VIN and GND ports on the Arduino Uno, thus powering the entire car. Furthermore, I connected the Arduino Uno to my laptop via USB type B and uploaded a C++ program using Arduino IDE. In setup(), I defined the numbered ports on the Arduino UNO by the inputs they were connected to on the H-Bridge (ex. IN1) and defined each port's pintype as an output or input using pinMode(). Then in loop(), I sent a digital signal using digitalWrite() and set the IN ports on the H-Brige controller to a HIGH or LOW signal, correctly distributing voltage between motors enabling them to all turn forward.
 
 
-
-
-
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -244,138 +241,149 @@ void loop() {
             </code>
         </pre>
     </div>
-</body>
-</html>
 
-&nbsp;
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Site</title>
-    <style>
-        .code-block {
-            overflow-x: auto;
-            white-space: pre;
-            width: 750px;
-            height: 475px;
-            max-height: 475px;
-            background-color: #1E1E1E; /* Optional: Set background color */
-            padding: 5px;
-            border: 2px solid #CCCCCC; 
-            border-radius: 10px; /* Optional: Rounded corners */
-            font-family: Consolas, Monaco, 'Andale Mono', monospace; /* Example font */
-            font-size: 14px; /* Example font size */
-        }
-    </style>
-</head>
-<body>
     <h1>Arduino Nano Code</h1>
     <div class="code-block">
         <pre>
 <span style="color:#FFFFFF;"><b>Arduino Uno & H-Bridge (car)</b></span>
             <code> 
 <span style="color:#FFFFFF;">
-#include &lt;SoftwareSerial.h&gt;
-#define TXD 11
-#define RXD 10
+#include <SoftwareSerial.h>
+#include <Wire.h>
+#define SW2 A3
+#define VRx A2
+#define VRy A1
+#define SW1 A0
+// controller switch
+#define BTN 6 // Button 
 
-//defining HC-05 Inputs & Outputs
-SoftwareSerial BT_Serial(TXD, RXD);
-                
-// mapping H-Bridge outputs to ports on Arduino Uno
-int ena = 10;
-int IN1 = 9;
-int IN2 = 8;
-int IN3 = 7;
-int IN4 = 6;
-char z;
-                
+
+const int MPU6050 = 0x68; // Motion Detector Chip
+int flag = 0;
+int16_t X, Y, Z;
+int b = 0;
+
+// previous button state
+int counter = 0;
+
+SoftwareSerial BT_Serial(2,3); // Bluetooth(TX, RX); --> [Arduino] (Uno & Nano) Ports
+// RX --> Receives Bluetooth Signal
+// TX --> Transmit Bluetooth Signal
+
 void setup() {
-            
-   // Configures bluetooth and serial monitor
-   Serial.begin(9600);
-   BT_Serial.begin(9600);
-                
-   // Sets H-Bridge ports as outputs
-   pinMode(ena, OUTPUT);
-   pinMode(IN1, OUTPUT);
-   pinMode(IN2, OUTPUT);
-   pinMode(IN3, OUTPUT);
-   pinMode(IN4, OUTPUT);
-                
+Serial.begin(9600); // Initialize serial communication at 9600 bps
+BT_Serial.begin(9600);
+Wire.begin(); // Initilizes connection between Arduino NANO at 0X6B address
+Wire.beginTransmission(MPU6050);
+Wire.write(0x6B); // Specifies register address (0X6B) to write on
+Wire.write(0);
+Wire.endTransmission(true);
+pinMode(BTN, INPUT);
 }
-                
-void moveForward() {
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, LOW);
-    digitalWrite(IN3, HIGH);
-    digitalWrite(IN4, LOW);
-}
-                
-void moveBackward() {
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
-}
-                
-void turnLeft() {          
-   digitalWrite(IN1, LOW);
-   digitalWrite(IN2, HIGH);
-   digitalWrite(IN3, HIGH);
-   digitalWrite(IN4, LOW);          
-}
-                
-void turnRight() {
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, LOW);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
-}
-                
-void coast() {            
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, HIGH);
-    digitalWrite(IN4, HIGH);      
-}
-                
-void stop() {      
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, LOW);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, LOW);
-}
-                
-                
+
+
 void loop() {
-    
-    // Prints direction from Arduino Nano
-    if (BT_Serial.available() > 0) {   
-        z = BT_Serial.read();
-        Serial.println(z);         
-    }
-                
-    // Correlates input letter to correct move method
-    switch(z) {                                         // 'else if' equivalent
-        case '^':                                       // 'if' equivalent
-            moveForward();
-            break;
-        case 'v':
-            moveBackward();
-            break;
-        case '<':
-            turnLeft();
-            break;
-        case '>':
-            turnRight();
-            break;
-         case '.':
-            stop();
-            break;
-     }
+ //joyStick();
+ determineInput();
+}
+
+
+void readAccelerometer() {
+
+Wire.beginTransmission(MPU6050);
+Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
+Wire.endTransmission(false);
+Wire.requestFrom(MPU6050, 6, true);  // request a total of 6 registers
+
+// accelerometer orientation --> axis
+X = Wire.read() << 8 | Wire.read(); // X - axis value
+Y = Wire.read() << 8 | Wire.read(); // Y - axis value
+Z = Wire.read() << 8 | Wire.read(); // Z - axis value
+
+X = map(X, -17000, 17000, 0, 180);
+Y = map(Y, -17000, 17000, 0, 180);
+Z = map(Z, -17000, 17000, 0, 180);
+
+}
+
+
+void motionGesture() {
+
+readAccelerometer();
+
+
+if (X < 60 && flag == 0) {
+ flag = 1;
+ BT_Serial.write('v');
+}
+else if (X > 130 && flag == 0) {
+ flag=1;
+ BT_Serial.write('^');
+}
+else if (Y < 60  && flag == 0) {
+ flag = 1;
+ BT_Serial.write('>');
+}
+else if (Y > 130 && flag == 0) {
+ flag = 1;
+ BT_Serial.write('<');
+}
+else if (X > 66 && X < 120 && Y > 66 && Y < 120 && flag == 1) {
+ flag = 0;
+ BT_Serial.write('.');
+  }
+
+}
+
+//for some reason Arduion Uno and Nano are reading different values from the same joystick
+void joyStick() {
+
+ int X = analogRead(VRx);
+ int Y = analogRead(VRy);
+ int Z1 = digitalRead(SW1);
+ int Z2 = digitalRead(SW2);
+
+  if (X >= 0 && X <= 60) {
+   BT_Serial.write('v');
+  }
+  else if (X >= 1020 && X <=1030) {
+    BT_Serial.write('^');
+  }
+  else if (Y >= 1020 && Y <= 1030) {
+    BT_Serial.write('>');
+  }
+  else if (Y >= 0 && Y <= 5) {
+    BT_Serial.write('<');
+  }
+  else {
+    BT_Serial.write('.');
+  }
+  
+}
+
+// aka button alternater 
+void determineInput() {
+
+ //current button state
+ int a = digitalRead(BTN);
+  // making sure the button is changing value from 0 to 1:
+ // if button is clicked
+ if (a == 0 && b == 1) {
+   counter++;
+ }
+
+ b = a;
+
+ if (counter % 2 == 0) {
+     motionGesture();
+     Serial.println("motion");
+ }
+ 
+ else {
+     joyStick();
+     Serial.println("joystick");
+ }
+ 
 }
 </span>
             </code>
@@ -383,8 +391,6 @@ void loop() {
     </div>
 </body>
 </html>
-
-
 
 
 
