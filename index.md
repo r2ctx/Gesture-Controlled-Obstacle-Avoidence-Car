@@ -135,13 +135,7 @@ Here's where you'll put your code. The syntax below places it into a block of co
 
 &nbsp;
 
-# Resources
-
-| [Hand Gesture Control Robot Via bluetooth - Hackster.io](https://www.hackster.io/embeddedlab786/hand-gesture-control-robot-via-bluetooth-94b13d) |
-| [Binding HC-05 Bluetooth Module's - Instructables](https://www.instructables.com/AT-command-mode-of-HC-05-Bluetooth-module/) |
-| [How to Wire and Program a Button - Arduino Documentation](https://docs.arduino.cc/built-in-examples/digital/Button/) |
-
-## Code
+# Code
 Arduino Uno
 
 ```c++
@@ -439,4 +433,10 @@ void determineInput() {
 }
 
 ```
+
+# Resources
+
+| [Hand Gesture Control Robot Via bluetooth](https://www.hackster.io/embeddedlab786/hand-gesture-control-robot-via-bluetooth-94b13d) | Hackster.io |
+| [Binding HC-05 Bluetooth Module's](https://www.instructables.com/AT-command-mode-of-HC-05-Bluetooth-module/) | Instructables |
+| [How to Wire and Program a Button](https://docs.arduino.cc/built-in-examples/digital/Button/) | Arduino Documentation |
 
