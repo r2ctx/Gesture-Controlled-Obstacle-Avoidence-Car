@@ -85,7 +85,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
     </style>
 </head>
 <body>
-    <h1>Code</h1>
+    <h1>Arduino Uno Code</h1>
     <div class="code-block">
         <pre>
 <span style="color:#FFFFFF;"><b>Arduino Uno & H-Bridge (car)</b></span>
@@ -198,6 +198,7 @@ void loop() {
 </body>
 </html>
 
+&nbsp;
 
 <html lang="en">
 <head>
@@ -221,7 +222,7 @@ void loop() {
     </style>
 </head>
 <body>
-    <h1>Code</h1>
+    <h1>Arduino Nano Code</h1>
     <div class="code-block">
         <pre>
 <span style="color:#FFFFFF;"><b>Arduino Uno & H-Bridge (car)</b></span>
@@ -333,7 +334,6 @@ void loop() {
     </div>
 </body>
 </html>
-
 
 
 
