@@ -150,15 +150,17 @@ Here's where you'll put your code. The syntax below places it into a block of co
     <style>
         .code-block {
             overflow-x: auto;
+            white-space: pre;
             width: 750px;
-            height: 600px; /* Increased height to accommodate both code segments */
-            max-height: 600px;
+            height: 950px; /* Increased height to accommodate both code segments */
+            max-height: 950px;
+            background-color: #1E1E1E; /* Changed background color */
             padding: 5px;
-            background: #180808;
             border: 2px solid #CCCCCC;
             border-radius: 10px;
             font-family: Consolas, Monaco, 'Andale Mono', monospace;
-            font-size: 14px;    
+            font-size: 14px;
+            color: #FFFFFF; /* Set text color to white */    
         }
     </style>
 </head>
