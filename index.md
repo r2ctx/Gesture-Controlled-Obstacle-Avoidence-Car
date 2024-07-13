@@ -54,36 +54,10 @@ After finding the slave's ip address using 'AT+ADDR=?', I binded
 In building the Gesture Controlled Robot, my first milestone encompassed building the car's base, and wiring up all necessary electrical components (boards) to ensure the car was physically functional. I first began by wiring the IN ports on the H-Bridge controller to digital ports on the Arduino Uno. Next, I connected the motors to the terminals on the H-Bridge Controller (OUT1, OUT2, OUT3, OUT4) in a criss-cross orientation. I then connected 4 AA Batteries to the 12V+ and GND terminals on the H-Bridge, which I also wired up to the VIN and GND ports on the Arduino Uno, thus powering the entire car. Furthermore, I connected the Arduino Uno to my laptop via USB type B and uploaded a C++ program using Arduino IDE. In setup(), I defined the numbered ports on the Arduino UNO by the inputs they were connected to on the H-Bridge (ex. IN1) and defined each port's pintype as an output or input using pinMode(). Then in loop(), I sent a digital signal using digitalWrite() and set the IN ports on the H-Brige controller to a HIGH or LOW signal, correctly distributing voltage between motors enabling them to all turn forward.
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Site</title>
-    <style>
-        .code-block {
-            overflow-x: auto;
-            white-space: pre;
-            width: 750px;
-            height: 475px;
-            max-height: 475px;
-            background-color: #1E1E1E; /* Optional: Set background color */
-            padding: 5px;
-            border: 2px solid #CCCCCC; 
-            border-radius: 10px; /* Optional: Rounded corners */
-            font-family: Consolas, Monaco, 'Andale Mono', monospace; /* Example font */
-            font-size: 14px; /* Example font size */
-        }
-        .code-text {
-            color: #FFFFFF;
-        }
-    </style>
-</head>
-<body>
-    <h1>Arduino Uno Code</h1>
-    <div class="code-block">
-        <pre class="code-text"><b>Arduino Uno & H-Bridge (car)</b>
-<code>
+# Arduino Uno Code
+<details>
+  <summary>Click to expand</summary>
+  <pre><code>
 #include <Wire.h>
 #include <SoftwareSerial.h>
 
@@ -203,7 +177,6 @@ void determineGesture() {
         stop();
       }
       break;
-  
     case 'v':
       if (!ultraSonic2()) {
       moveBackward();
@@ -212,31 +185,27 @@ void determineGesture() {
        stop();
       }
       break;
-
     case '<':
       turnLeft1();
       break;
-
     case '>':
       turnRight1();
       break;
-
     case '.':
       stop();
-   }
+ }
 }
 
 void loop() {
  determineGesture();
 }
-</code>
-        </pre>
-    </div>
+  </code></pre>
+</details>
 
-    <h1>Arduino Nano Code</h1>
-    <div class="code-block">
-        <pre class="code-text"><b>Arduino Uno & H-Bridge (car)</b>
-<code>
+# Arduino Nano Code
+<details>
+  <summary>Click to expand</summary>
+  <pre><code>
 #include <SoftwareSerial.h>
 #include <Wire.h>
 #define SW2 A3
@@ -315,7 +284,7 @@ else if (X > 66 && X < 120 && Y > 66 && Y < 120 && flag == 1) {
   }
 }
 
-//for some reason Arduino Uno and Nano are reading different values from the same joystick
+//for some reason Arduion Uno and Nano are reading different values from the same joystick
 void joyStick() {
  int X = analogRead(VRx);
  int Y = analogRead(VRy);
@@ -348,7 +317,6 @@ void determineInput() {
  if (a == 0 && b == 1) {
    counter++;
  }
-
  b = a;
 
  if (counter % 2 == 0) {
@@ -360,11 +328,8 @@ void determineInput() {
      Serial.println("joystick");
  }
 }
-</code>
-        </pre>
-    </div>
-</body>
-</html>
+  </code></pre>
+</details>
 
 
 
@@ -415,7 +380,7 @@ Here's where you'll put your code. The syntax below places it into a block of co
 
 -->
 
-&nbsp;
+
 
 # Components
 <!---
