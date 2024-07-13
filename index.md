@@ -199,6 +199,144 @@ void loop() {
 </html>
 
 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Pages Site</title>
+    <style>
+        .code-block {
+            overflow-x: auto;
+            white-space: pre;
+            width: 750px;
+            height: 475px;
+            max-height: 475px;
+            background-color: #1E1E1E; /* Optional: Set background color */
+            padding: 5px;
+            border: 2px solid #CCCCCC; 
+            border-radius: 10px; /* Optional: Rounded corners */
+            font-family: Consolas, Monaco, 'Andale Mono', monospace; /* Example font */
+            font-size: 14px; /* Example font size */
+        }
+    </style>
+</head>
+<body>
+    <h1>Code</h1>
+    <div class="code-block">
+        <pre>
+<span style="color:#FFFFFF;"><b>Arduino Uno & H-Bridge (car)</b></span>
+            <code> 
+<span style="color:#FFFFFF;">
+#include &lt;SoftwareSerial.h&gt;
+#define TXD 11
+#define RXD 10
+
+//defining HC-05 Inputs & Outputs
+SoftwareSerial BT_Serial(TXD, RXD);
+                
+// mapping H-Bridge outputs to ports on Arduino Uno
+int ena = 10;
+int IN1 = 9;
+int IN2 = 8;
+int IN3 = 7;
+int IN4 = 6;
+char z;
+                
+void setup() {
+            
+   // Configures bluetooth and serial monitor
+   Serial.begin(9600);
+   BT_Serial.begin(9600);
+                
+   // Sets H-Bridge ports as outputs
+   pinMode(ena, OUTPUT);
+   pinMode(IN1, OUTPUT);
+   pinMode(IN2, OUTPUT);
+   pinMode(IN3, OUTPUT);
+   pinMode(IN4, OUTPUT);
+                
+}
+                
+void moveForward() {
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, HIGH);
+    digitalWrite(IN4, LOW);
+}
+                
+void moveBackward() {
+    digitalWrite(IN1, LOW);
+    digitalWrite(IN2, HIGH);
+    digitalWrite(IN3, LOW);
+    digitalWrite(IN4, HIGH);
+}
+                
+void turnLeft() {          
+   digitalWrite(IN1, LOW);
+   digitalWrite(IN2, HIGH);
+   digitalWrite(IN3, HIGH);
+   digitalWrite(IN4, LOW);          
+}
+                
+void turnRight() {
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, LOW);
+    digitalWrite(IN4, HIGH);
+}
+                
+void coast() {            
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, HIGH);
+    digitalWrite(IN3, HIGH);
+    digitalWrite(IN4, HIGH);      
+}
+                
+void stop() {      
+    digitalWrite(IN1, LOW);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, LOW);
+    digitalWrite(IN4, LOW);
+}
+                
+                
+void loop() {
+    
+    // Prints direction from Arduino Nano
+    if (BT_Serial.available() > 0) {   
+        z = BT_Serial.read();
+        Serial.println(z);         
+    }
+                
+    // Correlates input letter to correct move method
+    switch(z) {                                         // 'else if' equivalent
+        case '^':                                       // 'if' equivalent
+            moveForward();
+            break;
+        case 'v':
+            moveBackward();
+            break;
+        case '<':
+            turnLeft();
+            break;
+        case '>':
+            turnRight();
+            break;
+         case '.':
+            stop();
+            break;
+     }
+}
+</span>
+            </code>
+        </pre>
+    </div>
+</body>
+</html>
+
+
+
+
 
 
 <!---
@@ -262,8 +400,8 @@ Here's where you'll put your code. The syntax below places it into a block of co
 | [H-Bridge Motor Driver](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/ref=sr_1_11?crid=2I0MTAM87KGBX&dib=eyJ2IjoiMSJ9.Uhkp4V4YuMhSQCL0zp7DOagThE52qqHMItNDAg9kPKfS4JZ9iDUMvFsuc8egCwssjf00Nmxfxyw1COwlCLaQO840s3u0MaRBK3dW2mzeK09EtH_Y6zQjFbiVMiOR6CHMCZjxxXZ93QCSlXUL73DVt-llACkd2PQLRex8Ilpvbo-uW9XVpxyUhoUjUku5xPG6l9lMxXcA6tiq8r88g1YatfNdJhbmEijZns6wV6XbD0s.rbLGWtWTbYHXjq5M3tghJa95-S8XEcPOLrrsclhVZAs&dib_tag=se&keywords=SparkFun+Dual+H-Bridge+motor+drivers+L298&qid=1718559198&sprefix=sparkfun+dual+h-bridge+motor+drivers+l298%2Caps%2C149&sr=8-11) | $6.99 | direct module for motors
 | [HC-05 Bluetooth Module (2x)](https://www.amazon.com/DSD-TECH-HC-05-Pass-through-Communication/dp/B01G9KSAF6/ref=sr_1_1_sspa?crid=1Y1E63CI5V330&dib=eyJ2IjoiMSJ9.GVe7xTdQBd8ycP5WU8ZbiWWV7BFUDNGSUph0cXQjue5IrNCfv4w86s2ZhriTU5-OJz9Pb0U9ADpSaqeNpsiD3YWnwTvHbZ-nmvkVzV1bVFyk64Dg5oueYfxrOWrP8zL237YIXI3A_vZyDl57bAsJcmuQWrwh402QjpOFOgKKGrcnMTSl7FMdpn_hK2quExKVMAe-UtAj7AdCZZqAxmq9-Gn34ulNeCWXSaLgzC3rhIU.OQX71neyKQAbgDKW9kMG-jZL3uzOYHLkpEbLZs_Mp40&dib_tag=se&keywords=HC-05+Bluetooth+Module&qid=1718559342&sprefix=%2Caps%2C196&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1) | $9.99 | signals between Arduino Uno and Nano |
 | [Joyick for Arduino](https://www.amazon.com/Teyleten-Robot-Dual-axis-Controller-Raspberry/dp/B0CPFDKWZF/ref=sr_1_1?crid=2721KLBYAXK0G&dib=eyJ2IjoiMSJ9.6zfYPy2SA893_1p8cYE-sIZkQ1viGapkKtMLPZjCAjQ8vES9HHRSoqsmhSHrlRjIxPp7B0cXty-XvziLGNDGuTC0Fn9cXxn1q0tp-5Mhxln_x6R4on7tz44M6RAKrVhjH985Q1YehejohUhNxtX_z8ILEXmCS-10-0kHjKWuVoic1SF2XzAJmXbP13rGMxsrEV-ak1WZ-TB6jeQibC_BwLMPHEcjLvbfsJ5RxVeYBkk.eTPb36RxXUA1hGNGLGKPh-fwYLmvGOpG0BYJ02620KM&dib_tag=se&keywords=joystick+arduino&qid=1720730419&sprefix=joystick+arduion%2Caps%2C181&sr=8-1) |
-$9.88 | joystick control of car |
-| [Solderless Breadboard - Half Size](https://www.amazon.com/Qunqi-point-Experiment-Breadboard-5-5%C3%978-2%C3%970-85cm/dp/B0135IQ0ZC/ref=sr_1_10?crid=2IFADSYVTFSVX&dib=eyJ2IjoiMSJ9.6TgbxdjPWRSoIqeLPap38EFx3ylBBBq0oRRvqZun2nf8c3J3kqDvsLTAJg4mQJN2DQZnEKh5siy8fssIDqPXNdpG5iO8d05mNWQUdDEZAx3ArbHIhLAPaw2x8QE9h1pI50A1gx2gl3B3qYnDo4T9pv_8-ZnEGkM-87OYIH27RYRtQogcM-AC6zdLS8mSiSHexrUziQCayzAuFUR-TuQUXJZjBxgEqYIeZrcKNhsib9d6g9KG4Ge5IyX9gM-qL-Ub9000ifuf9cln8U8036s9hp9aW8xkCtbaPQP1Vu48NDU.ezzkxHOsO-XwLrOKP1Ni3N_tf2aG_6UTv4p0BnSGIP0&dib_tag=se&keywords=half-size+bread+board&qid=1720893952&sprefix=half-size+bread+boar%2Caps%2C149&sr=8-10) | $5.98 | base for glove components |
+$9.88 | alternate controller |
+| [Solderless Breadboard - Half Size](https://www.amazon.com/Qunqi-point-Experiment-Breadboard-5-5%C3%978-2%C3%970-85cm/dp/B0135IQ0ZC/ref=sr_1_10?crid=2IFADSYVTFSVX&dib=eyJ2IjoiMSJ9.6TgbxdjPWRSoIqeLPap38EFx3ylBBBq0oRRvqZun2nf8c3J3kqDvsLTAJg4mQJN2DQZnEKh5siy8fssIDqPXNdpG5iO8d05mNWQUdDEZAx3ArbHIhLAPaw2x8QE9h1pI50A1gx2gl3B3qYnDo4T9pv_8-ZnEGkM-87OYIH27RYRtQogcM-AC6zdLS8mSiSHexrUziQCayzAuFUR-TuQUXJZjBxgEqYIeZrcKNhsib9d6g9KG4Ge5IyX9gM-qL-Ub9000ifuf9cln8U8036s9hp9aW8xkCtbaPQP1Vu48NDU.ezzkxHOsO-XwLrOKP1Ni3N_tf2aG_6UTv4p0BnSGIP0&dib_tag=se&keywords=half-size+bread+board&qid=1720893952&sprefix=half-size+bread+boar%2Caps%2C149&sr=8-10) | $5.98 | base of controller |
 | [Motors + Wheels + Base](https://www.amazon.com/MakerFocus-Chassis-MEGA2560-MEGA1280-Microcontroller/dp/B01LYZDP9U) | $19.99 | motors, wheels, and car base|
 | [Set of Male/Female Wires](https://www.amazon.com/ZYAMY-120PCS-Connector-Multicolor-Breadboard/dp/B0742RS6YL/ref=sr_1_1?crid=21S67LIQJEWBY&dib=eyJ2IjoiMSJ9.6XXe8GsCSvJz4ezKFLOnW-HQzxR-V2K194UJ-mxTqdj2IQK47UrDg8c5hx-iURTM9tfb-yR55yjIX6FyOV6Saz018AALKek67BQYE3IK9KJ8q6-NQwRGilZG4sddccCYQFdpqwOt-IVS3K3dydlE9S00nuo_koy2p2SQl26k3I7IbRyj0UWL_oZYWHrktBL8LTzAOfq3pEvmB2pp1X7IsfGmUFvCkkZKpyMc0ZsverIYJtFwqGgb4am0GYW-JimuUnvqxIHt9IXO1QVmJVCmcYnpT7G5EiDEoOSseFkmRis.Q-IH9PSHqskX_Ygs1CwrJdzY-PRUXOPF3_y1eRq3ppw&dib_tag=se&keywords=set+of+male-male%2C+male-female%2C+and+female-female+wires+short&qid=1719345645&s=industrial&sprefix=set+of+male-male%2C+male-female%2C+and+female-female+wires+sho%2Cindustrial%2C125&sr=1-1) | $7.39 | for wiring all components |
 | [Ultrasonic Sensor(s)](https://www.amazon.com/WWZMDiB-HC-SR04-Ultrasonic-Distance-Measuring/dp/B0B1MJJLJP/ref=sr_1_5?crid=9ZJP8VRZSJFF&dib=eyJ2IjoiMSJ9.hxKSGnm38uFYPbLd-yrIsGKtiigcjiHBIR4HeBGiJvRLTXVkrQVm2-2X9h0DX4IGZYcDIy5GlwZ6-_r_mPVsFAWYOWj4DIl5qoKw5z9-69Yu_s0Iod1JUacucsC7zRfGCgBi6MWbRNOOrfNnCJls21sZ5X92RuBO0Mdgc9F1zcVC3jLL--a2XxVReiEoJ0M9A2H0lylYhk3uxuJ2ve1swutQGgGFlIVTbD0YsDVd3Ro.uaMr3MvshBPzwS6EHg3CTlKfFCI2Ru2EEpGKw5yudtA&dib_tag=se&keywords=ultrasonic%2Bsensors&qid=1720730628&sprefix=ultrasonic%2Bsensor%2Caps%2C135&sr=8-5&th=1) | $6.99 | object detection |
