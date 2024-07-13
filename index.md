@@ -55,8 +55,10 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 
 
 # Code
+
+# Arduino Uno Code
 <details>
-  <summary>Arduino Uno</summary>
+  <summary>Click to expand</summary>
   <pre><code>
 #include <Wire.h>
 #include <SoftwareSerial.h>
@@ -202,9 +204,9 @@ void loop() {
   </code></pre>
 </details>
 
-
+# Arduino Nano Code
 <details>
-  <summary>Arduino Nano</summary>
+  <summary>Click to expand</summary>
   <pre><code>
 #include <SoftwareSerial.h>
 #include <Wire.h>
