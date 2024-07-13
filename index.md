@@ -54,317 +54,6 @@ After finding the slave's ip address using 'AT+ADDR=?', I binded
 In building the Gesture Controlled Robot, my first milestone encompassed building the car's base, and wiring up all necessary electrical components (boards) to ensure the car was physically functional. I first began by wiring the IN ports on the H-Bridge controller to digital ports on the Arduino Uno. Next, I connected the motors to the terminals on the H-Bridge Controller (OUT1, OUT2, OUT3, OUT4) in a criss-cross orientation. I then connected 4 AA Batteries to the 12V+ and GND terminals on the H-Bridge, which I also wired up to the VIN and GND ports on the Arduino Uno, thus powering the entire car. Furthermore, I connected the Arduino Uno to my laptop via USB type B and uploaded a C++ program using Arduino IDE. In setup(), I defined the numbered ports on the Arduino UNO by the inputs they were connected to on the H-Bridge (ex. IN1) and defined each port's pintype as an output or input using pinMode(). Then in loop(), I sent a digital signal using digitalWrite() and set the IN ports on the H-Brige controller to a HIGH or LOW signal, correctly distributing voltage between motors enabling them to all turn forward.
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Site</title>
-    <style>
-        .code-block {
-            overflow-x: auto;
-            white-space: pre;
-            width: 750px;
-            height: 475px;
-            max-height: 475px;
-            background-color: #1E1E1E;
-            padding: 5px;
-            border: 2px solid #CCCCCC;
-            border-radius: 10px;
-            font-family: Consolas, Monaco, 'Andale Mono', monospace;
-            font-size: 14px;
-            color: #FFFFFF;
-        }
-    </style>
-</head>
-<body>
-    <h1>Arduino Uno Code</h1>
-    <details>
-        <summary>Click to expand</summary>
-        <div class="code-block">
-            <pre>
-                <code>
-#include <Wire.h>
-#include <SoftwareSerial.h>
-
-// Bluetooth
-#define TXD 11
-#define RXD 10
-SoftwareSerial BT_Serial(TXD, RXD);
-// Ultrasonic
-#define TRIG1 2
-#define ECHO1 4
-#define TRIG2 5
-#define ECHO2 3
-
-// map H-Bridge outputs to Uno ports
-int IN1 = 9;
-int IN2 = 8;
-int IN3 = 7;
-int IN4 = 6;
-char z;
-
-void setup() {
-   // Configures bluetooth and baud rate
-   Serial.begin(9600);
-   BT_Serial.begin(9600);
-
-   // H-Bridge ports to outputs
-   pinMode(IN1, OUTPUT);
-   pinMode(IN2, OUTPUT);
-   pinMode(IN3, OUTPUT);
-   pinMode(IN4, OUTPUT);
-
-   // Ultrasonic pin declaration
-   pinMode(TRIG1, OUTPUT);
-   pinMode(ECHO1, INPUT);
-   pinMode(TRIG2, OUTPUT);
-   pinMode(ECHO2, INPUT);
-}
-
-void moveForward() {
-   digitalWrite(IN1, HIGH);
-   digitalWrite(IN2, LOW);
-   digitalWrite(IN3, HIGH);
-   digitalWrite(IN4, LOW);
-}
-
-void moveBackward() {
-   digitalWrite(IN1, LOW);
-   digitalWrite(IN2, HIGH);
-   digitalWrite(IN3, LOW);
-   digitalWrite(IN4, HIGH);
-}
-
-void turnLeft1() {
-   digitalWrite(IN1, LOW);
-   digitalWrite(IN2, HIGH);
-   digitalWrite(IN3, HIGH);
-   digitalWrite(IN4, LOW);
-}
-
-void turnRight1() {
-   digitalWrite(IN1, HIGH);
-   digitalWrite(IN2, LOW);
-   digitalWrite(IN3, LOW);
-   digitalWrite(IN4, HIGH);
-}
-
-void stop() {
-   digitalWrite(IN1, LOW);
-   digitalWrite(IN2, LOW);
-   digitalWrite(IN3, LOW);
-   digitalWrite(IN4, LOW);
-}
-
-//Front UltraSonic Sensor
-bool ultraSonic1() {
-   digitalWrite(TRIG1, LOW);
-   digitalWrite(TRIG1, HIGH);
-   digitalWrite(TRIG1, LOW);
-
-    // Calculate distance
-   long duration = pulseIn(ECHO1, HIGH);
-   float distance = duration * 0.034 / 2;
-
-   if (distance < 15 || distance > 1175) {
-       return true;
-   }
-   return false;
-}
-
-//Back UltraSonic
-bool ultraSonic2() {
-   digitalWrite(TRIG2, LOW);
-   digitalWrite(TRIG2, HIGH);
-   digitalWrite(TRIG2, LOW);
-
-   // Calculate distance
-   long duration = pulseIn(ECHO2, HIGH);
-   float distance = duration * 0.034 / 2;
-
-   if (distance < 15 || distance > 1175) {
-     return true;
-   }
-   return false;
-}
-
-void determineGesture() {
-   if (BT_Serial.available() > 0) {
-     z = BT_Serial.read();     
-   }
-
-   switch(z) { 
-    case '^':
-      if (!ultraSonic1()) {
-      moveForward();
-      }
-      else {
-        stop();
-      }
-      break;
-    case 'v':
-      if (!ultraSonic2()) {
-      moveBackward();
-      }
-      else {
-       stop();
-      }
-      break;
-    case '<':
-      turnLeft1();
-      break;
-    case '>':
-      turnRight1();
-      break;
-    case '.':
-      stop();
- }
-}
-
-void loop() {
- determineGesture();
-}
-                </code>
-            </pre>
-        </div>
-    </details>
-
-    <h1>Arduino Nano Code</h1>
-    <details>
-        <summary>Click to expand</summary>
-        <div class="code-block">
-            <pre>
-                <code>
-#include <SoftwareSerial.h>
-#include <Wire.h>
-#define SW2 A3
-#define VRx A2
-#define VRy A1
-#define SW1 A0
-// controller switch
-#define BTN 6 // Button 
-
-const int MPU6050 = 0x68; // Motion Detector Chip
-int flag = 0;
-int16_t X, Y, Z;
-int b = 0;
-
-// previous button state
-int counter = 0;
-
-SoftwareSerial BT_Serial(2,3); // Bluetooth(TX, RX); --> [Arduino] (Uno & Nano) Ports
-// RX --> Receives Bluetooth Signal
-// TX --> Transmit Bluetooth Signal
-
-void setup() {
-Serial.begin(9600); // Initialize serial communication at 9600 bps
-BT_Serial.begin(9600);
-Wire.begin(); // Initilizes connection between Arduino NANO at 0X6B address
-Wire.beginTransmission(MPU6050);
-Wire.write(0x6B); // Specifies register address (0X6B) to write on
-Wire.write(0);
-Wire.endTransmission(true);
-pinMode(BTN, INPUT);
-}
-
-void loop() {
- //joyStick();
- determineInput();
-}
-
-void readAccelerometer() {
-Wire.beginTransmission(MPU6050);
-Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
-Wire.endTransmission(false);
-Wire.requestFrom(MPU6050, 6, true);  // request a total of 6 registers
-
-// accelerometer orientation --> axis
-X = Wire.read() << 8 | Wire.read(); // X - axis value
-Y = Wire.read() << 8 | Wire.read(); // Y - axis value
-Z = Wire.read() << 8 | Wire.read(); // Z - axis value
-
-X = map(X, -17000, 17000, 0, 180);
-Y = map(Y, -17000, 17000, 0, 180);
-Z = map(Z, -17000, 17000, 0, 180);
-}
-
-void motionGesture() {
-readAccelerometer();
-
-if (X < 60 && flag == 0) {
- flag = 1;
- BT_Serial.write('v');
-}
-else if (X > 130 && flag == 0) {
- flag=1;
- BT_Serial.write('^');
-}
-else if (Y < 60  && flag == 0) {
- flag = 1;
- BT_Serial.write('>');
-}
-else if (Y > 130 && flag == 0) {
- flag = 1;
- BT_Serial.write('<');
-}
-else if (X > 66 && X < 120 && Y > 66 && Y < 120 && flag == 1) {
- flag = 0;
- BT_Serial.write('.');
-  }
-}
-
-//for some reason Arduion Uno and Nano are reading different values from the same joystick
-void joyStick() {
- int X = analogRead(VRx);
- int Y = analogRead(VRy);
- int Z1 = digitalRead(SW1);
- int Z2 = digitalRead(SW2);
-
-  if (X >= 0 && X <= 60) {
-   BT_Serial.write('v');
-  }
-  else if (X >= 1020 && X <=1030) {
-    BT_Serial.write('^');
-  }
-  else if (Y >= 1020 && Y <= 1030) {
-    BT_Serial.write('>');
-  }
-  else if (Y >= 0 && Y <= 5) {
-    BT_Serial.write('<');
-  }
-  else {
-    BT_Serial.write('.');
-  }
-}
-
-// aka button alternater 
-void determineInput() {
- //current button state
- int a = digitalRead(BTN);
-  // making sure the button is changing value from 0 to 1:
- // if button is clicked
- if (a == 0 && b == 1) {
-   counter++;
- }
- b = a;
-
- if (counter % 2 == 0) {
-     motionGesture();
-     Serial.println("motion");
- }
- else {
-     joyStick();
-     Serial.println("joystick");
- }
-}
-                </code>
-            </pre>
-        </div>
-    </details>
-</body>
-</html>
-
 
 <!---
  # Final Milestone
@@ -412,14 +101,12 @@ Here's where you'll put images of your schematics. [Tinkercad](https://www.tinke
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
 -->
+# Schematic 
+
 
 
 
 # Components
-<!---
-| **Component** | **Price** | **Usecase** |
-|:--:|:--:|:--:|
--->
 
 | [Arduino Uno](https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/ref=sr_1_1_sspa?crid=1V4XJ1JOA8UQQ&dib=eyJ2IjoiMSJ9.MazmhFfn-DF8W5oyX_S-tH7qkt_WuogERq_8M3-FTf6ou9kOBA5zItAmHHSDNak0z60nUJ-2lw_MGDugGZSVnD2v64TGllCLNOhouT8ifL9mqHfaVwIJIJDDQRs9U9Q6GI0IKsWWvjHtrn6FGgfvF9HdxFHV5n3_NF-uCB2HVDhXEWZqayzOWTsLbOGt6RRNKYHL0p2PgFGimKSbp3PUgKIHsKG_3F9sPSdbEpm_Qt0.sGetorRX1BiMIfXBXxhwWw8uqP5AKgpqNDL0tv2u7MA&dib_tag=se&keywords=Arduino%2BUno&qid=1718558645&sprefix=arduino%2Buno%2Caps%2C134&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1) | $29.00 | controls H-Bride, motors, and HC-05 bluetooth module|
 | [Arduino Nano](https://www.amazon.com/Arduino-A000005-ARDUINO-Nano/dp/B0097AU5OU/ref=sr_1_3?crid=3BTE9ZUKPU3KP&dib=eyJ2IjoiMSJ9.DuUAPNKOZx3V-ph33HzyN07Qbfpikx59bB5Qb_BiE51Vy1oguSeb8nkrcN01TQfzpxFOYkQ0osRbYSjo9mQNZ7d5f0y7HI4UOISCA6T17bofs3LnIUpj9F7gDS46r_NB804pwBNPk6KRC_QzGR63NP7N5Mv90TpOVGxTGC0CiX3HHv0L7tZndIwZ-NfyOc_kh3hcxJrGc3GcJt9puPfsJJWWbQb8dPX10zdkVEqAGgc.M1h1yLu1Q_7DRs-q3gXAiHxcTtquvqS-AqZYDMUNnVU&dib_tag=se&keywords=Arduino+Nano+R3&qid=1718558821&sprefix=%2Caps%2C162&sr=8-3) | $25.10 | controls IMU and HC-05 Bluetooth Module |
@@ -437,22 +124,24 @@ Here's where you'll put your code. The syntax below places it into a block of co
 | [USB Type B](https://www.amazon.com/Monoprice-6-Feet-24AWG-Plated-105438/dp/B003BXPQF2/ref=sr_1_8?crid=2YUWBTC59H9Z5&dib=eyJ2IjoiMSJ9.hCC1scuHFhmHD3CfyTe_zLUECEvKqGhh9tXOxP0XsrFyfKOw1Si4xoF5FdOEEPZ6shBCewBfdqtfkicwyangDoHa5-4548AduMsw-Xw_HXdEIWvDT2g9hjc9c0YUgWiaK5U6KzcYuH3RmdEaNSPn675SPUd1iLlwqx1cFVEjJE-QVs-nvN70x6TElmgkWdIO48kJjATvYM4tpQHLl_rpiE05o_BRIm2O4w_OMngOP78.gz8eJIIGjAvfE2MfE0SQf4vDTUvhvhvLxsJtBHzGmqY&dib_tag=se&keywords=USB+B+to+A&qid=1720893787&sprefix=usb+b+to+a+and+mini+usb+to+a+bundle%2Caps%2C167&sr=8-8) | $3.89 | connect Arduino Uno to computer |
 
 
-
+<!---
+ 
 # Starter Project
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lBnLvlJ5_s4?si=6Fjxz9oYdJ5fjPSC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 *Today I constructed a calculator through soldering buttons, an MPU (STC Chip), and a CR2032 battery to a motherboard. Originally, when soldering the MPU, I failed to realize that one of its pins did not make it through to the other side of the motherboard, causing the calculator to malfunction when outputting to its display. Fixing the issue was painfully done by re-soldering, and changing the chip's orientation. This was especially confusing as the instructions were unclear on the intended position of the MPU, so I had to troubleshoot by soldering it in multiple orientations until I found one that worked. After fully soldering all the components in the correct orientation, I assembled the motherboard inside its casing using small screws and nuts.
 
-
-
-<!---
-# Referenced Resources
-One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
-- [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
-- [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
-- [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
-
-To watch the BSE tutorial on how to create a portfolio, click here.
 -->
+
+&nbsp;
+
+# Resources
+
+[Hand Gesture Control Robot Via bluetooth - Hackster.io](https://www.hackster.io/embeddedlab786/hand-gesture-control-robot-via-bluetooth-94b13d)
+[Binding HC-05 Bluetooth Module's - Instructables](https://www.instructables.com/AT-command-mode-of-HC-05-Bluetooth-module/)
+[How to Wire and Program a Button - Arduino Documentation](https://docs.arduino.cc/built-in-examples/digital/Button/)
+
+
+
 
