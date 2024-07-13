@@ -58,7 +58,7 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 
 # Arduino Uno Code
 <details>
-  <summary>Click to expand</summary>
+  <summary>Clasdadasdasdasd2354613</summary>
   <pre><code>
 #include <Wire.h>
 #include <SoftwareSerial.h>
