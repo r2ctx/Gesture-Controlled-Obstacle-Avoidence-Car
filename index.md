@@ -145,8 +145,8 @@ Here's where you'll put your code. The syntax below places it into a block of co
             overflow-x: auto;
             white-space: pre;
             width: 750px;
-            height: 475px;
-            max-height: 475px;
+            height: 950px; /* Increased height to accommodate both code segments */
+            max-height: 950px;
             background-color: #1E1E1E;
             padding: 5px;
             border: 2px solid #CCCCCC;
@@ -158,11 +158,10 @@ Here's where you'll put your code. The syntax below places it into a block of co
     </style>
 </head>
 <body>
-    <h1>Arduino Uno Code</h1>
-    <details>
-        <summary>Click to expand</summary>
-        <div class="code-block">
-            <pre><code class="c++">
+    <h1>Combined Code Segments</h1>
+    <div class="code-block">
+        <pre><code class="c++">
+/* Arduino Uno Code */
 #include <Wire.h>
 #include <SoftwareSerial.h>
 
@@ -304,15 +303,8 @@ void determineGesture() {
 void loop() {
  determineGesture();
 }
-            </code></pre>
-        </div>
-    </details>
 
-    <h1>Arduino Nano Code</h1>
-    <details>
-        <summary>Click to expand</summary>
-        <div class="code-block">
-            <pre><code class="c++">
+/* Arduino Nano Code */
 #include <SoftwareSerial.h>
 #include <Wire.h>
 #define SW2 A3
@@ -434,12 +426,14 @@ void determineInput() {
      joyStick();
      Serial.println("joystick");
 }
-            </code></pre>
-        </div>
-    </details>
+        </code></pre>
+    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-    <script>hljs.highlightAll
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</body>
+</html>
+
 
 
 # Resources
