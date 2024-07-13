@@ -439,11 +439,5 @@ void determineInput() {
  else {
      joyStick();
      Serial.println("joystick");
-}    a
-        </code></pre>
-    </div>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-   <script>hljs.highlightAll();</script>
-</body>
-</html>
+}   
 
