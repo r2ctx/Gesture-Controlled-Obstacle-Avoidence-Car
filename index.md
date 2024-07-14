@@ -295,7 +295,6 @@ void loop() {
 ```c++
 #include <SoftwareSerial.h>
 #include <Wire.h>
-#define SW2 A3
 #define VRx A2
 #define VRy A1
 #define SW1 A0
@@ -383,7 +382,6 @@ void joyStick() {
   int X = analogRead(VRx);
   int Y = analogRead(VRy);
   int Z1 = digitalRead(SW1);
-  int Z2 = digitalRead(SW2);
 
   if (X >= 0 && X <= 60) {
    BT_Serial.write('v');
