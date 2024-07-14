@@ -254,7 +254,7 @@ void determineGesture() {
 
     case '^':
       if (!ultraSonic1()) {
-      moveForward();
+        moveForward();
       }
       else {
         stop();
@@ -263,24 +263,25 @@ void determineGesture() {
   
     case 'v':
       if (!ultraSonic2()) {
-      moveBackward();
+        moveBackward();
       }
       else {
-       stop();
+        stop();
       }
       break;
 
     case '<':
-      turnLeft();
+        turnLeft();
       break;
 
     case '>':
-      turnRight();
+        turnRight();
       break;
 
     case '.':
-      stop();
- }
+       stop();
+       break;
+   }
 
 }
 
