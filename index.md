@@ -211,8 +211,8 @@ void stop() {
    digitalWrite(IN4, LOW);
 }
 
-// Front UltraSonic Sensor
-bool ultraSonic1() {
+
+bool ultraSonic1() { // Front UltraSonic Sensor
 
    digitalWrite(TRIG1, LOW);
    digitalWrite(TRIG1, HIGH);
@@ -228,8 +228,7 @@ bool ultraSonic1() {
    return false;
 }
 
-// Backwards UltraSonic Sesnor
-bool ultraSonic2() {
+bool ultraSonic2() { // Backwards UltraSonic Sesnor
 
    digitalWrite(TRIG2, LOW);
    digitalWrite(TRIG2, HIGH);
@@ -286,7 +285,7 @@ void determineGesture() {
 }
 
 void loop() {
- determineGesture();
+   determineGesture();
 }
 
 ```
@@ -329,7 +328,7 @@ void setup() {
 
 
 void loop() {
- determineInput();
+  determineInput();
 }
 
 
@@ -381,10 +380,10 @@ void motionGesture() {
 
 void joyStick() {
 
- int X = analogRead(VRx);
- int Y = analogRead(VRy);
- int Z1 = digitalRead(SW1);
- int Z2 = digitalRead(SW2);
+  int X = analogRead(VRx);
+  int Y = analogRead(VRy);
+  int Z1 = digitalRead(SW1);
+  int Z2 = digitalRead(SW2);
 
   if (X >= 0 && X <= 60) {
    BT_Serial.write('v');
@@ -446,7 +445,7 @@ SoftwareSerial Bluetooth(11,10); //Bluetooth(TX, RX); --> Arduino Uno
 
 void setup() {
   Serial.begin(9600);
-Bluetooth.begin(38400); //HC-5 default speed in (AT) bluetooth mode
+  Bluetooth.begin(38400); //HC-5 default speed in (AT) bluetooth mode
 }
 
 
