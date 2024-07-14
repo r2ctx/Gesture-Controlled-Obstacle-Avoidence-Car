@@ -5,10 +5,6 @@
 <!--- Anything between these symbols will not render on the published site -->
 
 
-
-
-
-
 | **Engineer** | **School** | **Field of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Ryan Chakravarthy | Amador Valley High School | Cybersecurity | Rising Junior |
@@ -38,7 +34,7 @@ In the video, I worked on getting the base of the car
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PngfwoImU6A?si=Sr4rgwN2wUguZjp-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-I built the controller for the car using a half-size soughterless breadboard, with an HC-05 Bluetooth Module, and MPU6050 Axis Accelerametor, and an Arduino Nano. I then wired the GND and 3.3V on the HC-05, as well as the RXD and TXD pins for trasmitting and reciving data to the Arduino Nano. Next, I wired the MPU6050 with 5V and GND on the Arduino Nano, along with the SCL and SDA pins for sycronizing I2C communication with and transferring data between the MPU6050 and the Arduino Nano. Then on the car I wired up the HC-05 much the same, with the RXD and TXD pins plugged into the Arduino Uno. With both Bluetooth Module's correctly wired up, I bonded them using AT Commands setting the controler as the 'master', and the car as the 'slave'. Firstly, I used the 
+I built the controller for the car using a half-size soughterless breadboard, with an HC-05 Bluetooth Module, and MPU6050 Axis Accelerametor, and an Arduino Nano. I then wired the GND and 3.3V on the HC-05, as well as the RXD and TXD pins for trasmitting and reciving data to the Arduino Nano. Next, I wired the MPU6050 with 5V and GND on the Arduino Nano, along with the SCL and SDA pins for sycronizing I2C communication with and transferring data between the MPU6050 and the Arduino Nano. Then on the car I wired up the HC-05 much the same, with the RXD and TXD pins plugged into the Arduino Uno. With both Bluetooth Module's correctly wired up, I bonded them using AT Commands setting the controler as the 'master', and the car as the 'slave'. Firstly, I used the command 
 
 *(AT Binding with Bluetooth HC-05/ Bluetooth Methods/Serial Monitor) --> Envoke car move method.
 
@@ -306,7 +302,6 @@ void loop() {
 #define SW1 A0
 #define BTN 6 // Button 
 
-
 const int MPU6050 = 0x68; // Motion Detector Chip
 int flag = 0;
 int16_t X, Y, Z;
@@ -320,14 +315,16 @@ SoftwareSerial BT_Serial(2,3);
 // TX --> Transmit Bluetooth Signal
 
 void setup() {
-Serial.begin(9600); // Initialize serial communication at 9600 bps
-BT_Serial.begin(9600);
-Wire.begin(); // Initilizes connection between Arduino NANO at 0X6B address
-Wire.beginTransmission(MPU6050);
-Wire.write(0x6B); // Specifies register address (0X6B) to write on
-Wire.write(0);
-Wire.endTransmission(true);
-pinMode(BTN, INPUT);
+
+  Serial.begin(9600); // Initialize serial communication at 9600 bps
+  BT_Serial.begin(9600);
+  Wire.begin(); // Initilizes connection between Arduino NANO at 0X6B address
+  Wire.beginTransmission(MPU6050);
+  Wire.write(0x6B); // Specifies register address (0X6B) to write on
+  Wire.write(0);
+  Wire.endTransmission(true);
+  pinMode(BTN, INPUT);
+
 }
 
 
@@ -338,50 +335,50 @@ void loop() {
 
 void readAccelerometer() {
 
-Wire.beginTransmission(MPU6050);
-Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
-Wire.endTransmission(false);
-Wire.requestFrom(MPU6050, 6, true);  // request a total of 6 registers
+  Wire.beginTransmission(MPU6050);
+  Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
+  Wire.endTransmission(false);
+  Wire.requestFrom(MPU6050, 6, true);  // request a total of 6 registers
 
-// accelerometer orientation --> axis
-X = Wire.read() << 8 | Wire.read(); // X - axis value
-Y = Wire.read() << 8 | Wire.read(); // Y - axis value
-Z = Wire.read() << 8 | Wire.read(); // Z - axis value
+  // Accelerometer orientation --> axis
+  X = Wire.read() << 8 | Wire.read(); // X - axis value
+  Y = Wire.read() << 8 | Wire.read(); // Y - axis value
+  Z = Wire.read() << 8 | Wire.read(); // Z - axis value
 
-X = map(X, -17000, 17000, 0, 180);
-Y = map(Y, -17000, 17000, 0, 180);
-Z = map(Z, -17000, 17000, 0, 180);
+  X = map(X, -17000, 17000, 0, 180);
+  Y = map(Y, -17000, 17000, 0, 180);
+  Z = map(Z, -17000, 17000, 0, 180);
 
 }
 
 
 void motionGesture() {
 
-readAccelerometer();
+  readAccelerometer();
 
-
-if (X < 60 && flag == 0) {
- flag = 1;
- BT_Serial.write('v');
-}
-else if (X > 130 && flag == 0) {
- flag=1;
- BT_Serial.write('^');
-}
-else if (Y < 60  && flag == 0) {
- flag = 1;
- BT_Serial.write('>');
-}
-else if (Y > 130 && flag == 0) {
- flag = 1;
- BT_Serial.write('<');
-}
-else if (X > 66 && X < 120 && Y > 66 && Y < 120 && flag == 1) {
- flag = 0;
- BT_Serial.write('.');
+  if (X < 60 && flag == 0) {
+    flag = 1;
+    BT_Serial.write('v');
+  }
+  else if (X > 130 && flag == 0) {
+    flag = 1;
+    BT_Serial.write('^');
+  }
+  else if (Y < 60  && flag == 0) {
+    flag = 1;
+    BT_Serial.write('>');
+  }
+  else if (Y > 130 && flag == 0) {
+    flag = 1;
+    BT_Serial.write('<');
+  }
+  else if (X > 66 && X < 120 && Y > 66 && Y < 120 && flag == 1) {
+    flag = 0;
+    BT_Serial.write('.');
   }
 
 }
+
 void joyStick() {
 
  int X = analogRead(VRx);
@@ -405,30 +402,62 @@ void joyStick() {
     BT_Serial.write('.');
   }
   
+ }
+
+void determineInput() { // Button alternater 
+
+  // Current button state
+  int a = digitalRead(BTN);
+
+  // Making sure the button is changing value from 0 to 1:
+  // if button is clicked
+  if (a == 0 && b == 1) {
+    counter++;
+  }
+
+  b = a;
+
+  if (counter % 2 == 0) {
+    motionGesture();
+    Serial.println("motion");
+  }
+
+  else {
+    joyStick();
+    Serial.println("joystick");
+  }
+
 }
 
-// Button alternater 
-void determineInput() {
+```
 
- // Current button state
- int a = digitalRead(BTN);
+Binding Bluetooth Modules
 
- // Making sure the button is changing value from 0 to 1:
- // if button is clicked
- if (a == 0 && b == 1) {
-   counter++;
- }
 
- b = a;
+```c++
 
- if (counter % 2 == 0) {
-     motionGesture();
-     Serial.println("motion");
- }
- else {
-     joyStick();
-     Serial.println("joystick");
- }
+#include <SoftwareSerial.h>
+
+// Use your own ports RX & TX
+SoftwareSerial Bluetooth(11,10); //Bluetooth(TX, RX); --> Arduino Uno
+//RX --> Receives Bluetooth signal
+//TX --> Transmits Bluetooth signal
+
+
+void setup() {
+  Serial.begin(9600);
+Bluetooth.begin(38400); //HC-5 default speed in (AT) bluetooth mode
+}
+
+
+void loop() {
+
+  if (Bluetooth.available()) {
+    Serial.write(Bluetooth.read());
+  }
+  if (Serial.available()) {
+    Bluetooth.write(Serial.read());
+  }
 
 }
 
