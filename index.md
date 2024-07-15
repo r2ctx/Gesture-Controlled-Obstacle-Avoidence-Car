@@ -441,7 +441,7 @@ void determineInput() { // Button alternater
  - <small>import '#include <SoftwareSerial.h>', declare TXD & RXD pins SoftwareSerial BT_Serial(TXD, RXD)'</small>
  - <small> begin bluetooth 'BT_Serial.begin(9600)', use 'BT_Serial.write('')' and 'BT_Serial.read()' to transfer data</small>
 
-   <small>[Second Milestone](#second-milestone)
+ <small>[Second Milestone](#second-milestone)
 
 ```c++
 
