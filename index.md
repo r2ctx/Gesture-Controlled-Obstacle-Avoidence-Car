@@ -39,8 +39,6 @@ In the video, I worked on getting the base of the car
 The controller for the car is built using a half-size soughterless breadboard, with an HC-05 Bluetooth Module, MPU6050 Axis Accelerametor, and an Arduino Nano. The GND and 3.3V on the HC-05 as well as the RXD and TXD pins for trasmitting and reciving data should be wired to the Arduino. Next, wire the MPU6050 with 5V and GND on the Arduino Nano, along with the SCL and SDA pins for sycronizing I2C communication with between the MPU6050 and the Arduino Nano. Bond the bluetooth using AT Commands setting the controler as the 'master', and the car as the 'slave', look at [Binding Bluetooth Modules](#binding-bluetooth-modules).
 
 
-
-
 <!---
 After finding the slave's ip address using 'AT+ADDR=?', I binded 
 -->
