@@ -38,12 +38,12 @@ In the video, I worked on getting the base of the car
 
 I built the controller for the car using a half-size soughterless breadboard, with an HC-05 Bluetooth Module, and MPU6050 Axis Accelerametor, and an Arduino Nano. I then wired the GND and 3.3V on the HC-05, as well as the RXD and TXD pins for trasmitting and reciving data to the Arduino Nano. Next, I wired the MPU6050 with 5V and GND on the Arduino Nano, along with the SCL and SDA pins for sycronizing I2C communication with and transferring data between the MPU6050 and the Arduino Nano. Then on the car I wired up the HC-05 much the same, with the RXD and TXD pins plugged into the Arduino Uno. With both Bluetooth Module's correctly wired up, I bonded them using AT Commands setting the controler as the 'master', and the car as the 'slave':
  - <small>hold down resest button while powering them on resulting in the indicator light to slow blink</small>
-<small> - upload 'Binding Bluetooth Moduels' code on the Arduino Uno</small>
-<small> - open Serial Monitor, select 'Both NL &  CR', set the baud rate to 9600</small>
-<small> - use 'AT+ROLE=0' to set this module to the slave, and 'AT+ADDR=?' to recieve slave address (copy it)</small>
-<small> - use 'AT+ROLE=1' to set other module to master, then bind to slave using 'AT+BIND= slave_address'</small>
-<small> - import library '#include <SoftwareSerial.h>', declare recieve and transmit pins SoftwareSerial BT_Serial(TXD, RXD)', begin bluetooth 'BT_Serial.begin(9600)' transmission</small>
-<small> - use 'BT_Serial.write('')' and 'BT_Serial.read()' to write data</small>
+ - <small>upload 'Binding Bluetooth Moduels' code on the Arduino Uno</small>
+ - <small>open Serial Monitor, select 'Both NL &  CR', set the baud rate to 9600</small>
+ - <small>use 'AT+ROLE=0' to set this module to the slave, and 'AT+ADDR=?' to recieve slave address (copy it)</small>
+ - <small>use 'AT+ROLE=1' to set other module to master, then bind to slave using 'AT+BIND= slave_address'</small>
+ - <small>import library '#include <SoftwareSerial.h>', declare recieve and transmit pins SoftwareSerial BT_Serial(TXD, RXD)', begin bluetooth 'BT_Serial.begin(9600)' transmission</small>
+ - <small>use 'BT_Serial.write('')' and 'BT_Serial.read()' to write data</small>
 
 
 
