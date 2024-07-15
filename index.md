@@ -27,6 +27,8 @@ In the video, I worked on getting the base of the car
  *(- created move methods for all directions
  - mapped move methods to Bluetooth Logic
  - UltraSonic Sensors.)
+
+*Ask for thumbnail to be set at 6:09/6:10
    
  
 
@@ -34,7 +36,9 @@ In the video, I worked on getting the base of the car
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PngfwoImU6A?si=Sr4rgwN2wUguZjp-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-I built the controller for the car using a half-size soughterless breadboard, with an HC-05 Bluetooth Module, and MPU6050 Axis Accelerametor, and an Arduino Nano. I then wired the GND and 3.3V on the HC-05, as well as the RXD and TXD pins for trasmitting and reciving data to the Arduino Nano. Next, I wired the MPU6050 with 5V and GND on the Arduino Nano, along with the SCL and SDA pins for sycronizing I2C communication with and transferring data between the MPU6050 and the Arduino Nano. Then on the car I wired up the HC-05 much the same, with the RXD and TXD pins plugged into the Arduino Uno. With both Bluetooth Module's correctly wired up, I bonded them using AT Commands setting the controler as the 'master', and the car as the 'slave'. Firstly, I used the command 
+I built the controller for the car using a half-size soughterless breadboard, with an HC-05 Bluetooth Module, and MPU6050 Axis Accelerametor, and an Arduino Nano. I then wired the GND and 3.3V on the HC-05, as well as the RXD and TXD pins for trasmitting and reciving data to the Arduino Nano. Next, I wired the MPU6050 with 5V and GND on the Arduino Nano, along with the SCL and SDA pins for sycronizing I2C communication with and transferring data between the MPU6050 and the Arduino Nano. Then on the car I wired up the HC-05 much the same, with the RXD and TXD pins plugged into the Arduino Uno. With both Bluetooth Module's correctly wired up, I bonded them using AT Commands setting the controler as the 'master', and the car as the 'slave'. I put the modules into AT mode by holding down there resest button while powering them on, resulting in the indicator light to slow blink. Then I uploaded 'Binding Bluetooth Moduels' code on the Arduino Uno, opened the Serial Monitor, selected 'Both NL & CR', set the baud rate to 9600, and used 'AT+ROLE=0' to set this module to the slave. Next, I used 'AT+ADDR=?' to recieve the address of the slave module. Then I plugged in the other HC-05 module, set it to the master 'AT+ROLE=1', and then binded it to the slave's address using 'AT+BIND= slave_address'. With correctly configured moduels, I set up infrastructure for them to send and recieve data between eachother. In Ardino IDE I included a necessary library '#include <SoftwareSerial.h>', used RXD (Recieve) and TXD (Transmit) in 'SoftwareSerial BT_Serial(TXD, RXD)' to map RXD and TXD to there respective ports on the Arduino (were you plugged them in), and then in the setup() I used 'BT_Serial.begin(9600)' to initilize connection at a 9600 baud rate. Lastly I used 'BT_Serial.write()' and 'BT_Serial.read()' to send and recieve bluetooth between the moduel's.
+
+Firstly, I used the command 
 
 *(AT Binding with Bluetooth HC-05/ Bluetooth Methods/Serial Monitor) --> Envoke car move method.
 
@@ -271,16 +275,16 @@ void determineGesture() {
       break;
 
     case '<':
-        turnLeft();
+      turnLeft();
       break;
 
     case '>':
-        turnRight();
+      turnRight();
       break;
 
     case '.':
-       stop();
-       break;
+      stop();
+      break;
    }
 
 }
