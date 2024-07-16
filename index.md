@@ -13,6 +13,12 @@
 <img src="Untitled design.png" alt="Profile Pic" height="500">
 </p>
 
+<div style="display: flex; justify-content: space-between;">
+  <img src="Profile Pic" alt="Image 1" style="width: 45%;">
+  <img src="10" alt="Image 2" style="width: 45%;">
+</div>
+
+
 # Modification 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9k2UJPtmCCA?si=DuoJOoHEpr13QJqq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
