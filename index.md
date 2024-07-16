@@ -437,7 +437,7 @@ void determineInput() { // Button alternater
  - <small>open Serial Monitor, select 'Both NL &  CR', set the baud rate to 9600</small>
  - <small>use 'AT+ROLE=0' to set this module to the slave, and 'AT+ADDR=?' to recieve slave address (copy it)</small>
  - <small>use 'AT+ROLE=1' to set other module to master, then bind to slave using 'AT+BIND= slave_address'</small>
- - <small>import '#include <SoftwareSerial.h>', declare TXD & RXD pins SoftwareSerial BT_Serial(TXD, RXD)'</small>
+ - <small>import '#include <SoftwareSerial.h>', declare TXD & RXD pins SoftwareSerial 'BT_Serial(TXD, RXD)'</small>
  - <small> begin bluetooth 'BT_Serial.begin(9600)', use 'BT_Serial.write('')' and 'BT_Serial.read()' to transfer data</small>
 
  <small>[Second Milestone](#second-milestone)
