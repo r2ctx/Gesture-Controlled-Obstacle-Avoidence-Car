@@ -10,14 +10,20 @@
 | Ryan Chakravarthy | Amador Valley High School | Cybersecurity | Rising Junior |
 
 
-<!---
-<p align="center">
+
+<p align="left">
 <img src="Untitled design.png" alt="Profile Pic" height="500">
 </p>
--->
+
+<p align="right">
+<img src="10.png" alt="Profile Pic" height="500">
+</p>
+
+
+
 <div style="display: flex; justify-content: space-between;">
-  <img src="Profile Pic" alt="Image 1" style="width: 45%;">
-  <img src="10" alt="Image 2" style="width: 45%;">
+  <img src="Profile Pic.png" alt="Image 1" style="width: 45%;">
+  <img src="10.png" alt="Image 2" style="width: 45%;">
 </div>
 
 
