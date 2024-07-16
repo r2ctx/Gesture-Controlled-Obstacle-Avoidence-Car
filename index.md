@@ -24,6 +24,9 @@ In the video, I worked on getting the base of the car
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7sxZPStkVJo?si=WXr-_IeogFqZ7ExR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+
+In my third milestone, I created move methods for all directions through alternating voltage outputs to the DC motors on the car; allowing the car to turn left, right, forward, and backward. I mapped these new directions to the gesture controller with 'if' and 'else' statements corresponding to the output of the MPU6050 Axis Accelerometer. I also implemented 2 range finders on the car that detect the distance of objects in front of them, by sending an alternating and digital ultrasonic soundwave through TRIG and receiving the raw distance of the soundwave via ECHO (pins of the sensor). I also transformed the raw distance output of the sensors by dividing it by 2 and multiplying it by the speed of sound in 0.034. In ultraSonic() I returned a boolean based on the magnitude of the distance; true if an object was close, and false otherwise. Then I added the method as a condition to my moveForward() and moveBackward() case statements, so they would only run if there was no object in front of them '!ultraSonic()'.
+
  *(- created move methods for all directions
  - mapped move methods to Bluetooth Logic
  - UltraSonic Sensors.)
