@@ -300,6 +300,8 @@ void loop() {
 
 ### Arduino Nano
 
+<small>[Second Milestone](#second-milestone)<small>
+
 ```c++
 #include <SoftwareSerial.h>
 #include <Wire.h>
