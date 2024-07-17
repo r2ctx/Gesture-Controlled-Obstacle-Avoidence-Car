@@ -135,7 +135,9 @@ Here's where you'll put your code. The syntax below places it into a block of co
  
 ### Arduino Uno
 
-<small>[First Milestone](#first-milestone) <small>[Third Milestone](#third-milestone) <small>[Modification](#modification)
+<small>[First Milestone](#first-milestone) 
+[Third Milestone](#third-milestone) 
+[Modification](#modification) <small>
 
 
 
