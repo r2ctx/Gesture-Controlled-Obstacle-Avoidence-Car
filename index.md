@@ -9,11 +9,16 @@
 |:--:|:--:|:--:|:--:|
 | Ryan Chakravarthy | Amador Valley High School | Cybersecurity | Rising Junior |
 
-
+&nbsp;
 
 <p align="center">
-<img src="10.png" alt="Profile Pic" height="500">
+<img src="10.png" alt="Profile Pic" height="350">
 </p>
+
+&nbsp;
+
+# Showcase Finale
+
 
 &nbsp;
 
@@ -447,6 +452,7 @@ void determineInput() { // Button alternater
  - <small>use 'AT+ROLE=1' to set other module to master, then bind to slave using 'AT+BIND= slave_address'</small>
  - <small>import '#include <SoftwareSerial.h>', declare TXD & RXD pins SoftwareSerial 'BT_Serial(TXD, RXD)'</small>
  - <small> begin bluetooth 'BT_Serial.begin(9600)', use 'BT_Serial.write('')' and 'BT_Serial.read()' to transfer data</small>
+ - <small> reference [Resources](#resources) for the tutorial I used
 
  <small>[Second Milestone](#second-milestone)
 
