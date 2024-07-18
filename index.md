@@ -12,7 +12,7 @@
 &nbsp;
 
 <p align="center">
-<img src="10.png" alt="Profile Pic" height="350">
+<img src="10.png" alt="Profile Pic" height="450">
 </p>
 
 &nbsp;
@@ -38,7 +38,7 @@ For my modification, I added a joystick control method and a button to switch be
 
 In my third milestone, [Arduino Uno](#arduino-uno), I created move methods for all directions through alternating voltage outputs to the DC motors on the car; allowing the car to turn left, right, forward, and backward. I mapped these new directions to the gesture controller with 'if' and 'else if' statements corresponding to the output of the MPU6050 Axis Accelerometer. I also implemented two ultrasonic sensors on the car that detect the distance of objects in front of them, by sending ultrasonic sound waves via the TRIG pin and receiving the reflected sound waves via the ECHO pin. The distance reuturned by the ECHO pin represents the distance to travel to the object and back, so I first divided it by 2, and then multipled by 0.034 to calculate the distance in centimeters. Then, in **ultraSonic()** I returned a boolean based on the magnitude of the distance output of the sensors; true if an object was close (aprox. 15cm), and false otherwise. Then I added the method as a condition to my moveForward() and moveBackward() case statements, so they would only run if there was no object in front of them '!ultraSonic()'.
 
-<img src="Power 5V.png" alt="Profile Pic" height="400" width="677">
+<img src="Power 5_1V.png" alt="Profile Pic" height="400" width="677">
 Detects the distance of objects in front of it, by sending an alternating ultrasonic soundwaves through TRIG and receiving the raw distance of the soundwave via ECHO.
 
 # Second Milestone
