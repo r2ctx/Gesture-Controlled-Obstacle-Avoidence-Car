@@ -29,6 +29,8 @@
 For my modification, I added a joystick control method and a button to switch between the gesture and joystick inputs. In [Arduino Uno](#arduino-uno) I created **joyStick()** to read values from the VRx and VRy pins on the joystick and used 'if' and 'else if' statements to map the pin outputs to directions; then I correspondingly wrote these directions to the bluetooth. But with 2 input methods, I wanted to ensure that one could only be used one at a time. To do this, I added a button to the breadboard of my controller, that returned 1 while being pressed and 0 otherwise. I wanted the button to save the fact that it had been clicked and not that it was being clicked, so I made an algorithm in **determineInput()** using integers to register the difference in output from the button when being clicked, and incriment a counter while doing so. Then, I used 'counter%2' to switch between the input methods based on the even or odd value of the counter.
 
 
+&nbsp;
+
 # Third Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7sxZPStkVJo?si=WXr-_IeogFqZ7ExR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -36,9 +38,9 @@ For my modification, I added a joystick control method and a button to switch be
 
 In my third milestone, [Arduino Uno](#arduino-uno), I created move methods for all directions through alternating voltage outputs to the DC motors on the car; allowing the car to turn left, right, forward, and backward. I mapped these new directions to the gesture controller with 'if' and 'else if' statements corresponding to the output of the MPU6050 Axis Accelerometer. I also implemented 2 ultrasonic sensors on the car that detect the distance of objects in front of them, by sending an alternating and digital ultrasonic soundwave through TRIG and receiving the raw distance of the soundwave via ECHO (pins of the sensor). I transformed the raw distance output of the sensors by dividing it by 2 and multiplying it by the speed of sound. In **ultraSonic()** I returned a boolean based on the magnitude of the distance; true if an object was close, and false otherwise. Then I added the method as a condition to my moveForward() and moveBackward() case statements, so they would only run if there was no object in front of them '!ultraSonic()'.
 
-<img src="ultraSonic().png" alt="Profile Pic" height="247" width="630">
+<img src="Power 5V.png" alt="Profile Pic" height="400" width="677">
 
- 
+&nbsp;
 
 # Second Milestone
 
@@ -49,6 +51,8 @@ I built the controller for the car using a half-size solderless breadboard, an H
 <!---
 After finding the slave's ip address using 'AT+ADDR=?', I binded 
 -->
+
+&nbsp;
 
 # First Milestone 
 
