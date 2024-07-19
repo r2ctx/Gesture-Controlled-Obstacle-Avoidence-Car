@@ -111,7 +111,7 @@ Here's where you'll put your code. The syntax below places it into a block of co
 # Schematic 
 
 <p align="center">
-<img src="schrmatic2.png" alt="Profile Pic" height="557" width="1000">
+<img src="schematicPOF.png" alt="Profile Pic" height="557" width="1000">
 </p>
 
 
