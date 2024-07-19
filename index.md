@@ -106,9 +106,18 @@ Here's where you'll put your code. The syntax below places it into a block of co
 
 -->
 
-<!---
+&nbsp;
+
 # Schematic 
--->
+
+<p align="center">
+<img src="schematic.png" alt="Profile Pic" height="450">
+</p>
+
+<p align="center">
+<img src="total.png" alt="Profile Pic" height="450">
+</p>
+
 
 
 
