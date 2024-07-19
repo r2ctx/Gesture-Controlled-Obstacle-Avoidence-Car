@@ -114,12 +114,6 @@ Here's where you'll put your code. The syntax below places it into a block of co
 <img src="schematic.png" alt="Profile Pic" height="577">
 </p>
 
-<p align="center">
-<img src="total.png" alt="Profile Pic" height="377">
-</p>
-
-
-
 
 # Components
 
