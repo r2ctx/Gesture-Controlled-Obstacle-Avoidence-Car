@@ -459,12 +459,11 @@ void determineInput() { // Button alternater
  - <small>hold down resest button while powering module, should result in slow blink</small>
  - <small>upload 'Binding Bluetooth Moduels' code on the Arduino Uno</small>
  - <small>open Serial Monitor, select 'Both NL &  CR', set the baud rate to 9600</small>
- - <small>use 'AT+ROLE=0' to set this module to the slave, and 'AT+ADDR=?' to recieve slave address (copy it)</small>
- - <small>use 'AT+ROLE=1' to set other module to master, then bind to slave using 'AT+BIND= slave_address'</small>
- - <small>import '#include <SoftwareSerial.h>', declare TXD & RXD pins SoftwareSerial 'BT_Serial(TXD, RXD)'</small>
+ - <small>use 'AT+ROLE=0' to set this module to the slave, and 'AT+ADDR=?' to recieve slave address (copy it) </small>
+ - <small>use 'AT+ROLE=1' to set other module to master, then bind to slave using 'AT+BIND= slave_address' </small>
+ - <small>import '<SoftwareSerial.h>', declare TXD & RXD pins SoftwareSerial 'BT_Serial(TXD, RXD)' </small>
  - <small> begin bluetooth 'BT_Serial.begin(9600)', use 'BT_Serial.write('')' and 'BT_Serial.read()' to transfer data</small>
- - <small> reference [Resources](#resources) for the tutorial I used
-
+ - <small> reference [Resources](#resources) for more details
  <small>[Second Milestone](#second-milestone)
 
 ```c++
