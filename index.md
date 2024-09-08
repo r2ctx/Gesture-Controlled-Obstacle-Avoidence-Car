@@ -7,12 +7,13 @@
 
 | **Engineer** | **School** | **Field of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Ryan Chakravarthy | Amador Valley High School | Cybersecurity | Rising Junior |
+| Ryan Chakravarthy | Amador Valley High School | Cybersecurity | Junior |
 
 &nbsp;
 
+
 <p align="center">
-<img src="10.png" alt="Profile Pic" height="450">
+<img src="apl.gif" alt="Profile Pic" height="450" >
 </p>
 
 &nbsp;
