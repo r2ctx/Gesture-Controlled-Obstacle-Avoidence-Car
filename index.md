@@ -13,7 +13,7 @@
 
 
 <p align="center">
-<img src="apl.gif" alt="Profile Pic" height="450" >
+<img src="10.png" alt="Profile Pic" height="450" >
 </p>
 
 &nbsp;
@@ -56,10 +56,15 @@ In building the Gesture Controlled Robot, my first milestone encompassed buildin
 
 &nbsp;
 
+# Demonstration
+
+<p align="center">
+<img src="apl.gif" alt="Profile Pic" height="450" >
+</p>
+
 # Final Showcase
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ovpaRhX01As?si=gHl9rQ3pPojW2epf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 
 
 <!---
