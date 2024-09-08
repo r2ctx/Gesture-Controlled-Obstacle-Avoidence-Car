@@ -1,10 +1,3 @@
-# Gesture Controlled Robot
-
-<!--- You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions: --> 
-<!--- This is an HTML comment in Markdown -->
-<!--- Anything between these symbols will not render on the published site -->
-
-
 | **Engineer** | **School** | **Field of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Ryan Chakravarthy | Amador Valley High School | Cybersecurity | Junior |
