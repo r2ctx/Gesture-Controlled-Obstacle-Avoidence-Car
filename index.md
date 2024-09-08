@@ -42,6 +42,8 @@
 | [Micro USB Cable](https://www.amazon.com/Braided-Charging-Compatible-Controller-Microphone/dp/B0B3J6RD34/ref=sr_1_14?crid=2YQBYUGH259IQ&dib=eyJ2IjoiMSJ9.f9NYn_Pp6FspnGAravIPXUZauuNB4JTty_d5vJncfcvd069SnYXXAY9fL_mMSZUusQlly-ID6lafuF6Af--hmTLMYbS6LYDkMA_x8tbuLNVaMDUeBErzQbQdoWhPhzcxzbS4Rjq_4iOm_sUzyH3jA6c9UpHFhOmW6G1y2Mv_CqtiUCPSnqirp0HtTDsSnuRYsnJZuLx8SWnyKQW2JzLgk7tVjBaSbxEmX7-zZ9BjH2Y.-UC7-3So9eFHBK-wXy_0XJyRGeaCNyfe-O9aQIq--yY&dib_tag=se&keywords=USB+B+to+A+and+mini+USB+to+A+bundle&qid=1720893654&sprefix=usb+b+to+a+and+mini+usb+to+a+bundle%2Caps%2C143&sr=8-14) | $4.99 | connect Arduino Nano to computer |
 | [USB Type B](https://www.amazon.com/Monoprice-6-Feet-24AWG-Plated-105438/dp/B003BXPQF2/ref=sr_1_8?crid=2YUWBTC59H9Z5&dib=eyJ2IjoiMSJ9.hCC1scuHFhmHD3CfyTe_zLUECEvKqGhh9tXOxP0XsrFyfKOw1Si4xoF5FdOEEPZ6shBCewBfdqtfkicwyangDoHa5-4548AduMsw-Xw_HXdEIWvDT2g9hjc9c0YUgWiaK5U6KzcYuH3RmdEaNSPn675SPUd1iLlwqx1cFVEjJE-QVs-nvN70x6TElmgkWdIO48kJjATvYM4tpQHLl_rpiE05o_BRIm2O4w_OMngOP78.gz8eJIIGjAvfE2MfE0SQf4vDTUvhvhvLxsJtBHzGmqY&dib_tag=se&keywords=USB+B+to+A&qid=1720893787&sprefix=usb+b+to+a+and+mini+usb+to+a+bundle%2Caps%2C167&sr=8-8) | $3.89 | connect Arduino Uno to computer |
 
+&nbsp;
+
 # Final Milestone 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9k2UJPtmCCA?si=DuoJOoHEpr13QJqq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
